@@ -3,29 +3,24 @@ URxvt*scrollBar_right:   false
 
 URxvt*transparent:       false
 
-URxvt.font:     xft:Roboto Mono
+URxvt.font:              xft:Roboto Mono
 
-Xft*dpi:        165
-Xft*antialias:  true
-Xft*autohint:   true
-
-URxvt.iso14755:		false
+URxvt.iso14755:	       	false
 URxvt.perl-ext-common: 	default,matcher,clipboard
-URxvt.url-launcher: 	chromium
+URxvt.url-launcher: 	  chromium
 URxvt.matcher.button: 	1
-URxvt.cursorBlink: 	1
+URxvt.cursorBlink: 	    1
 
 URxvt.clipboard.autocopy: true
-URxvt.keysym.M-c:	perl:clipboard:copy
-URxvt.keysym.M-v:	perl:clipboard:paste
-URxvt.keysym.C-v:	perl:clipboard:paste
-URxvt.keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt.keysym.M-c:	        perl:clipboard:copy
+URxvt.keysym.M-v:	        perl:clipboard:paste
+URxvt.keysym.M-C-v:       perl:clipboard:paste_escaped
 
 
 ! special colors
 *.foreground:  #93a1a1
 *.background:  #002b36
-*.cursorColor:  #93a1a1
+*.cursorColor: #93a1a1
 ! black
 *.color0:      #002b36
 *.color8:      #657b83

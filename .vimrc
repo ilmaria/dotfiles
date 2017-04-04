@@ -106,3 +106,11 @@ nnoremap ^ <nop>
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+
+
+" Remap some Finnish keyboard keys to match US layout 
+nmap å {
+nmap Ä }
+nmap ÅÅ [[
+nmap ÄÄ ]]
+nmap ö :

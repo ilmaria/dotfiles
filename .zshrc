@@ -55,7 +55,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 
 # History
-HISTFILE=~/.history_zsh
+HISTFILE=~/.zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 setopt extended_history         # Save timestamp

@@ -42,9 +42,9 @@ source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -Uz compinit
 compinit
 
-# spelling correction for commands
-setopt correct 
-
+setopt correct          # Spelling correction for commands
+setopt menu_complete    # Always show autocompletion menu
+setopt auto_cd          # Perform 'cd' command if input is valid path
 
 # Case insensitive autocompletion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -53,6 +53,9 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # Search with 'Ctrl-r'
 bindkey '^R' history-incremental-pattern-search-backward
 
+# Fix End and Home buttons 
+bindkey "^[[7~" beginning-of-line
+bindkey "^[[8~" end-of-line
 
 # History
 HISTFILE=~/.zhistory
@@ -69,3 +72,4 @@ setopt HIST_FIND_NO_DUPS        # Do not display a line previously found
 setopt HIST_SAVE_NO_DUPS        # Don't write duplicate entries in the history file
 setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks before recording entry
 setopt HIST_VERIFY              # Don't execute immediately upon history expansion
+

@@ -10,8 +10,8 @@
 
 
 " Set global tab size to 2 space
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 

@@ -51,12 +51,16 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # Search with 'Ctrl-r'
 bindkey '^R' history-incremental-pattern-search-backward
 
-# Fix End and Home buttons 
-bindkey "^[[7~" beginning-of-line
-bindkey "^[[8~" end-of-line
+# Fix special buttons
+bindkey "^[[7~"     beginning-of-line
+bindkey "^[[8~"     end-of-line
+bindkey "^[[3~"     delete-char 
+bindkey "^[[1;5C"   forward-word
+bindkey "^[[1;5D"   backward-word
+
 
 # History
-HISTFILE=~/.zhistory
+HISTFILE=$HOME/.zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 setopt extended_history         # Save timestamp

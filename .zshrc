@@ -5,7 +5,6 @@ ENABLE_CORRECTION="true"
 # Exports
 export BROWSER='/usr/bin/chromium'
 export EDITOR='/usr/bin/vim'
-export CHROMIUM_USER_FLAGS='--force-device-scale-factor=1.1'
 
 
 # Aliases
@@ -43,7 +42,6 @@ autoload -Uz compinit
 compinit
 
 setopt correct          # Spelling correction for commands
-setopt menu_complete    # Always show autocompletion menu
 setopt auto_cd          # Perform 'cd' command if input is valid path
 
 # Case insensitive autocompletion

@@ -6,6 +6,8 @@ ENABLE_CORRECTION="true"
 export BROWSER='/usr/bin/chromium'
 export EDITOR='/usr/bin/vim'
 
+PATH=$PATH:$HOME/bin
+
 
 # Aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

@@ -34,7 +34,12 @@ alias ls='ls --color=auto'
 
 
 # Zsh plugins
-plugins='/usr/share/zsh/plugins'
+if [ -f '/usr/share/zsh/plugins' ]
+then
+    plugins='/usr/share/zsh/plugins'
+else
+    plugins='/usr/share/'
+fi
 
 source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

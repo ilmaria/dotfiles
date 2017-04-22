@@ -8,6 +8,9 @@ export EDITOR='/usr/bin/vim'
 
 PATH=$PATH:$HOME/bin
 
+PS1=$'\n%C \u25B6 '
+PS2=' > '
+
 
 # Aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

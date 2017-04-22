@@ -8,6 +8,8 @@ URxvt.perl-ext-common:      default,matcher,clipboard
 URxvt.url-launcher:         chromium
 URxvt.matcher.button:       1
 URxvt.cursorBlink:          1
+URxvt.internalBorder:       30
+URxvt.geometry:             100x34
 
 ! Copy paste settings
 URxvt.clipboard.autocopy:   true

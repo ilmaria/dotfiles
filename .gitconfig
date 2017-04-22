@@ -19,8 +19,8 @@
  
     a = add
     aa = add --all
-    c = commit
-    cv = commit --verbose
+    c = commit --verbose
+    cc = commit
     ca = commit -a --verbose
     cm = commit -m
     cam = commit -a -m

@@ -23,6 +23,9 @@ set shiftwidth=4
 set expandtab
 set smarttab
 
+" Enable mouse control in all modes
+set mouse=a
+
 " Search down into subfolders
 " Provides tab-completion for file-related tasks
 set path+=**

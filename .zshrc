@@ -6,6 +6,9 @@ ENABLE_CORRECTION="true"
 export BROWSER='/usr/bin/chromium'
 export EDITOR='/usr/bin/vim'
 
+# Allows installing local dependencies with 'pip install -t .pip'
+export PYTHONPATH="./.pip:$PYTHONPATH" 
+
 PATH=$PATH:$HOME/bin
 
 PS1=$'\n%C \u25B6 '

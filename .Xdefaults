@@ -10,6 +10,7 @@ URxvt.matcher.button:       1
 URxvt.cursorBlink:          1
 URxvt.internalBorder:       30
 URxvt.geometry:             100x34
+URxvt.saveLines:            9999 
 
 ! Copy paste settings
 URxvt.clipboard.autocopy:   true

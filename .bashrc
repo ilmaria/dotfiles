@@ -33,6 +33,19 @@ alias la='l'
 alias ll='ls -lh'
 alias ls='ls --color=auto'
 
+LC_CTYPE=fi_FI.UTF-8
+LC_NUMERIC=fi_FI.UTF-8
+LC_TIME=fi_FI.UTF-8
+LC_COLLATE=fi_FI.UTF-8
+LC_MONETARY=fi_FI.UTF-8
+LC_PAPER=fi_FI.UTF-8
+LC_NAME=fi_FI.UTF-8
+LC_ADDRESS=fi_FI.UTF-8
+LC_TELEPHONE=fi_FI.UTF-8
+LC_MEASUREMENT=fi_FI.UTF-8
+LC_IDENTIFICATION=fi_FI.UTF-8
+# LC_MESSAGES="en_US.UTF-8"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

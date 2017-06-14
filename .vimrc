@@ -90,3 +90,6 @@ nmap ä }
 nmap ÅÅ [[
 nmap ÄÄ ]]
 nmap ö :
+
+" Map <C-space> to autocompletion
+imap <C-@> <C-n>

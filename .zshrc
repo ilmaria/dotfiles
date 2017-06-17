@@ -13,7 +13,7 @@ PATH=$PATH:$HOME/bin
 
 if [ -d "/opt/android-sdk/platform-tools" ]
 then
-    export PATH="$PATH:/opt/adb-fastboot/platform-tools"
+    export PATH="$PATH:/opt/android-sdk/platform-tools"
 fi
 
 PS1=$'\n%C \u25B6 '

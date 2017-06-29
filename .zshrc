@@ -8,6 +8,8 @@ export EDITOR='/usr/bin/vim'
 
 # Allows installing local dependencies with 'pip install -t .pip'
 export PYTHONPATH="./.pip:$PYTHONPATH" 
+# Enable erlang shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 PATH=$PATH:$HOME/bin
 

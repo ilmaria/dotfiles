@@ -9,31 +9,14 @@ map global insert <tab> '<a-;><gt>'
 map global insert <backtab> '<a-;><lt>'
 
 # Expand tabs to spaces
-hook global InsertChar \t %{
-  exec -draft -itersel h@
-}
-hook global InsertKey <backspace> %{ try %{
-  exec -draft hGh<a-k>\A\h+\Z<ret>gihyp<lt>
-}}
-
+map global insert <tab> '<a-;><gt>'
+map global insert <backtab> '<a-;><lt>'
 set global tabstop 4
 
-# Make 'x' select lines downward and 'X' upward
-def -hidden -params 1 extend-line-down %{
-  exec "<a-:>%arg{1}X"
-}
-def -hidden -params 1 extend-line-up %{
-  exec "<a-:><a-;>%arg{1}K<a-x>"
-}
-#map global normal x ":extend-line-down %val{count}<ret>"
-#map global normal X ":extend-line-up %val{count}<ret>"
+# Copy and paste to system clipboard
+hook global NormalKey y|d|c %{ nop %sh{
+  printf %s "$kak_reg_dquote" | xsel --input --clipboard
+}}
+map global user P '!xsel --output --clipboard<ret>'
+map global user p '<a-!>xsel --output --clipboard<ret>'
 
-# Discern CamelCase when moving between words
-def -hidden select-next-word %{
-  exec /[A-Z][a-z]+|[A-Z]+|[a-z]+<ret>
-}
-def -hidden extend-next-word %{
-  exec ?[A-Z][a-z]+|[A-Z]+|[a-z]+<ret>
-}
-map global normal w :select-next-word<ret>
-map global normal W :extend-next-word<ret>

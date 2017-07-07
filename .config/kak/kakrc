@@ -1,8 +1,20 @@
 # Search when typing
 set global incsearch true
 
-# Line numbers
-hook global WinCreate .* %{addhl number_lines}
+hook global WinCreate .* %{
+    # Make x select lines downward, and X select lines upward
+    def -hidden -params 1 extend-line-down %{
+        exec "<a-:>%arg{1}X"
+    }
+    def -hidden -params 1 extend-line-up %{
+        exec "<a-:><a-;>%arg{1}K<a-x>"
+    }
+    map global normal x ":extend-line-down %val{cursor_line}<ret>"
+    map global normal X ":extend-line-up %val{cursor_line}<ret>"
+
+    # Line numbers
+    addhl number_lines
+}
 
 # Indent with tab
 map global insert <tab> '<a-;><gt>'
@@ -37,3 +49,4 @@ map global normal w :select-next-word<ret>
 map global normal W :extend-next-word<ret>
 map global normal b :select-prev-word<ret>
 map global normal B :extend-prev-word<ret>
+

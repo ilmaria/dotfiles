@@ -20,3 +20,20 @@ hook global NormalKey y|d|c %{ nop %sh{
 map global user P '!xsel --output --clipboard<ret>'
 map global user p '<a-!>xsel --output --clipboard<ret>'
 
+# Discern CamelCase words as separate
+def -hidden select-next-word %{
+    exec /[A-Z][a-z]+|[A-Z]+|[a-z]+<ret>
+}
+def -hidden extend-next-word %{
+    exec ?[A-Z][a-z]+|[A-Z]+|[a-z]+<ret>
+}
+def -hidden select-prev-word %{
+    exec <a-/>[A-Z][a-z]+|[A-Z]+|[a-z]+<ret>
+}
+def -hidden extend-prev-word %{
+    exec <a-?>[A-Z][a-z]+|[A-Z]+|[a-z]+<ret>
+}
+map global normal w :select-next-word<ret>
+map global normal W :extend-next-word<ret>
+map global normal b :select-prev-word<ret>
+map global normal B :extend-prev-word<ret>

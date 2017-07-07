@@ -63,6 +63,7 @@ compinit
 
 setopt correct          # Spelling correction for commands
 setopt auto_cd          # Perform 'cd' command if input is valid path
+setopt menu_complete    # Select first completion item on key press
 
 # Case insensitive autocompletion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'

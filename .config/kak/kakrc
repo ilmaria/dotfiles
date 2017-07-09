@@ -16,6 +16,9 @@ hook global WinCreate .* %{
     addhl number_lines
 }
 
+# Map 'ö' to ':'
+map global normal ö :
+
 # Indent with tab
 map global insert <tab> '<a-;><gt>'
 map global insert <backtab> '<a-;><lt>'

@@ -56,6 +56,8 @@ fi
 
 source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Completions path
+fpath+=~/.zfunc
 
 # Enable autocompletion
 autoload -Uz compinit

@@ -13,11 +13,16 @@ hook global WinCreate .* %{
     map global normal X ":extend-line-up %val{cursor_line}<ret>"
 
     # Line numbers
-    addhl number_lines
+    addhl number_lines -relative
 }
 
 # Map 'ö' to ':'
 map global normal ö :
+
+hook global InsertChar j %{ try %{
+    exec -draft hH <a-k>jj<ret> d
+    exec <esc>
+}}
 
 # Indent with tab
 map global insert <tab> '<a-;><gt>'

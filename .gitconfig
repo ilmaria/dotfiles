@@ -22,7 +22,7 @@
 [alias]
     #one-line log
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-    graph = log --graph --all --oneline
+    graph = log --graph --oneline
  
     a = add
     aa = add --all

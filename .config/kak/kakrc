@@ -16,8 +16,10 @@ hook global WinCreate .* %{
     addhl number_lines -relative
 }
 
-# Map 'ö' to ':'
-map global normal ö :
+# Map 'ö' to <space>
+map global normal ö <space>
+# Map <space> to ':'
+map global normal <space> :
 
 hook global InsertChar j %{ try %{
     exec -draft hH <a-k>jj<ret> d

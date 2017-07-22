@@ -11,7 +11,7 @@ export PYTHONPATH="./.pip:$PYTHONPATH"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin
 
 if [ -d "/opt/android-sdk/platform-tools" ]
 then

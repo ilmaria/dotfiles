@@ -1,13 +1,8 @@
 # Search when typing
 set global incsearch true
 
-# Make x select lines downward, and X select lines upward
-def -hidden -params 1 extend-line-down %{
-    exec "<a-:>%arg{1}X"
-}
-def -hidden -params 1 extend-line-up %{
-    exec "<a-:><a-;>%arg{1}K<a-x>"
-}
+# Use ripgrep for grep command
+set global grepcmd 'rg --vimgrep --max-columns 200'
 
 # Shortcut keys for cycling though errors.
 map global normal <c-n> ":lint-next-error<ret>"
@@ -39,6 +34,15 @@ hook global NormalKey y|d|c %{ nop %sh{
 map global user P '!xsel --output --clipboard<ret>'
 map global user p '<a-!>xsel --output --clipboard<ret>'
 
+hook global BufOpenFifo '\*grep\*' %{
+    map -- global normal - ':grep-next-match<ret>'
+    map -- global normal _ ':grep-previous-match<ret>'
+}
+hook global BufOpenFifo '\*make\*' %{
+    map -- global normal - ':make-next-error<ret>'
+    map -- global normal _ ':make-next-error<ret>'
+}
+
 # Discern CamelCase words as separate
 # def -hidden select-next-word %{
 #     exec /[A-Z][a-z]+|[A-Z]+|[a-z]+<ret>
@@ -57,6 +61,14 @@ map global user p '<a-!>xsel --output --clipboard<ret>'
 # map global normal b :select-prev-word<ret>
 # map global normal B :extend-prev-word<ret>
 
+# Make x select lines downward, and X select lines upward
+def -hidden -params 1 extend-line-down %{
+    exec "<a-:>%arg{1}X"
+}
+def -hidden -params 1 extend-line-up %{
+    exec "<a-:><a-;>%arg{1}K<a-x>"
+}
+
 
 # Hooks
 hook global WinCreate .* %{
@@ -65,6 +77,9 @@ hook global WinCreate .* %{
 
     # Line numbers
     addhl number_lines -relative
+
+    # Highlight matching parentheses
+    addhl show_matching
 
     # Enable lint gutter
     lint-enable

@@ -9,13 +9,9 @@ def -hidden -params 1 extend-line-up %{
     exec "<a-:><a-;>%arg{1}K<a-x>"
 }
 
-hook global WinCreate .* %{
-    map global normal x ":extend-line-down %val{cursor_line}<ret>"
-    map global normal X ":extend-line-up %val{cursor_line}<ret>"
-
-    # Line numbers
-    addhl number_lines -relative
-}
+# Shortcut keys for cycling though errors.
+map global normal <c-n> ":lint-next-error<ret>"
+map global normal <c-b> ":lint-previous-error<ret>"
 
 # Map 'ö' to <space>
 map global normal ö <space>
@@ -61,3 +57,20 @@ map global user p '<a-!>xsel --output --clipboard<ret>'
 # map global normal b :select-prev-word<ret>
 # map global normal B :extend-prev-word<ret>
 
+
+# Hooks
+hook global WinCreate .* %{
+    map global normal x ":extend-line-down %val{cursor_line}<ret>"
+    map global normal X ":extend-line-up %val{cursor_line}<ret>"
+
+    # Line numbers
+    addhl number_lines -relative
+
+    # Enable lint gutter
+    lint-enable
+}
+
+hook global BufWritePost .* %{
+    # Lint file on save
+    lint
+}

@@ -1,3 +1,5 @@
+set global autochdir true
+
 # Search when typing
 set global incsearch true
 

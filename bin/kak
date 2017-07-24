@@ -1,0 +1,10 @@
+#!/bin/sh
+
+socket_file=$(kak -l | grep $USER)
+
+if [[ $socket_file == "" ]]; then        
+    # Create new kakoune deamon for current dir
+    kak -d -s $USER
+fi
+
+kak -c $USER $@

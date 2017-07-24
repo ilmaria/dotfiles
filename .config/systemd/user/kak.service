@@ -1,0 +1,9 @@
+[Unit]
+Description=Start Kakoune in daemon mode
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/kak -s %u -d
+
+[Install]
+WantedBy=multi-user.target

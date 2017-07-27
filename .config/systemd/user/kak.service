@@ -3,7 +3,7 @@ Description=Start Kakoune in daemon mode
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/kak -s %u -d
+ExecStart=/usr/bin/kak -s ilmari -d
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

@@ -15,6 +15,10 @@ map global normal ö <space>
 # Map <space> to ':'
 map global normal <space> :
 
+# Jump half a page with these buttons
+map global normal å gtvc # "%sh{ echo $(($kak_window_height / 2)) }k"
+map global normal ä gbvc # "%sh{ echo $(($kak_window_height / 2)) }j"
+
 hook global InsertChar j %{ try %{
     exec -draft hH <a-k>jj<ret> d
     exec <esc>

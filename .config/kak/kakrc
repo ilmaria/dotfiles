@@ -16,13 +16,8 @@ map global normal ö <space>
 map global normal <space> :
 
 # Jump half a page with these buttons
-map global normal å gtvc # "%sh{ echo $(($kak_window_height / 2)) }k"
-map global normal ä gbvc # "%sh{ echo $(($kak_window_height / 2)) }j"
-
-hook global InsertChar j %{ try %{
-    exec -draft hH <a-k>jj<ret> d
-    exec <esc>
-}}
+map global normal å gtvc
+map global normal ä gbvc
 
 # Indent with tab
 map global insert <tab> '<a-;><gt>'
@@ -68,18 +63,18 @@ hook global BufOpenFifo '\*make\*' %{
 # map global normal B :extend-prev-word<ret>
 
 # Make x select lines downward, and X select lines upward
-def -hidden -params 1 extend-line-down %{
-    exec "<a-:>%arg{1}X"
+def -hidden extend-line-down %{
+    exec "<a-:>X"
 }
-def -hidden -params 1 extend-line-up %{
-    exec "<a-:><a-;>%arg{1}K<a-x>"
+def -hidden extend-line-up %{
+    exec "<a-:><a-;>K<a-x>"
 }
 
 
 # Hooks
 hook global WinCreate .* %{
-    map global normal x ":extend-line-down %val{cursor_line}<ret>"
-    map global normal X ":extend-line-up %val{cursor_line}<ret>"
+    map global normal x ":extend-line-down <ret>"
+    map global normal X ":extend-line-up <ret>"
 
     # Line numbers
     addhl number_lines -relative

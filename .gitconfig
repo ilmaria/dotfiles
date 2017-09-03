@@ -53,4 +53,4 @@
     la = "!git config -l | grep alias | cut -c 7-"
 
 [core]
-    editor = vim
+    editor = kak

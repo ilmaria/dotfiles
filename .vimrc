@@ -34,15 +34,12 @@ set path+=**
 set ruler
 
 " Make space nop
-nnoremap <SPACE> <Nop>
+nnoremap <SPACE> :
 
 " Map <leader> to space
-let mapleader=" "
+let mapleader=","
 
-" Shortcut for saving file
-map <leader>w :w<CR>
-
-" Show line numbers
+" Shortcut f" Show line numbers
 set number
 
 " Show relative line numbers

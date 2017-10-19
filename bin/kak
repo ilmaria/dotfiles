@@ -1,5 +1,4 @@
 #!/bin/sh
-set -eu
 
 command -v kak >/dev/null 2>&1 || {
     echo >&2 "Kakoune is not installed. Aborting."
@@ -8,7 +7,7 @@ command -v kak >/dev/null 2>&1 || {
 
 socket_file=$(kak -l | grep $USER)
 
-if [[ $socket_file == "" ]]; then        
+if [ -n "$socket_file" ]; then        
     # Create new kakoune deamon for current dir
     kak -d -s $USER
 fi

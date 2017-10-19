@@ -18,7 +18,7 @@ then
     export PATH="$PATH:/opt/android-sdk/platform-tools"
 fi
 
-PS1=$'\n%C \u25B6 '
+PS1=$'\n%C > '
 PS2=' > '
 
 

@@ -3,8 +3,7 @@ ENABLE_CORRECTION="true"
 
 
 # Exports
-export BROWSER='/usr/bin/chromium'
-export EDITOR='/usr/bin/vim'
+export EDITOR="$HOME/bin/kak"
 export RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 # Allows installing local dependencies with 'pip install -t .pip'
 export PYTHONPATH="./.pip:$PYTHONPATH" 

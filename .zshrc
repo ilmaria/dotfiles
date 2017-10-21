@@ -10,7 +10,7 @@ export PYTHONPATH="./.pip:$PYTHONPATH"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin
+PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin:"$HOME/C:\\Users\\Ilmari\\AppData\\Roaming\\npm/bin/"
 
 if [ -d "/opt/android-sdk/platform-tools" ]
 then
@@ -20,6 +20,11 @@ fi
 PS1=$'\n%C > '
 PS2=' > '
 
+eval `dircolors $HOME/.dircolors/solarized-dark-256`
+
+export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
+export TERM=screen-256color       # for a tmux -2 session (also for screen)
+export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
 
 # Aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

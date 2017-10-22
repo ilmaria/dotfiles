@@ -90,3 +90,7 @@ hook global BufWritePost .* %{
     # Lint file on save
     lint
 }
+
+hook global BufWritePre .*.(js|go) %{
+    format
+}

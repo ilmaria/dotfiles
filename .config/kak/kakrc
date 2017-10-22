@@ -41,7 +41,7 @@ hook global BufOpenFifo '\*grep\*' %{
 }
 hook global BufOpenFifo '\*make\*' %{
     map -- global normal - ':make-next-error<ret>'
-    map -- global normal _ ':make-next-error<ret>'
+    map -- global normal _ ':make-previous-error<ret>'
 }
 
 # Discern CamelCase words as separate
@@ -73,8 +73,8 @@ def -hidden extend-line-up %{
 
 # Hooks
 hook global WinCreate .* %{
-    map global normal x ":extend-line-down <ret>"
-    map global normal X ":extend-line-up <ret>"
+#    map global normal x ":extend-line-down <ret>"
+#    map global normal X ":extend-line-up <ret>"
 
     # Line numbers
     addhl number_lines -relative

@@ -11,13 +11,13 @@ map global normal <c-n> ":lint-next-error<ret>"
 map global normal <c-b> ":lint-previous-error<ret>"
 
 # Map 'ö' to <space>
-map global normal ö <space>
+map global normal ö '<space>'
 # Map <space> to ':'
-map global normal <space> :
+map global normal <space> ':'
 
 # Jump half a page with these buttons
-map global normal å gtvc
-map global normal ä gbvc
+map global normal å 'gtvc'
+map global normal ä 'gbvc'
 
 # Indent with tab
 map global insert <tab> '<a-;><gt>'
@@ -27,6 +27,9 @@ map global insert <backtab> '<a-;><lt>'
 map global insert <tab> '<a-;><gt>'
 map global insert <backtab> '<a-;><lt>'
 set global tabstop 2
+
+map global user n ':lint-next-error<ret>'
+map global user N ':lint-previous-error<ret>'
 
 # Copy and paste to system clipboard
 hook global NormalKey y|d|c %{ nop %sh{
@@ -86,11 +89,10 @@ hook global WinCreate .* %{
     lint-enable
 }
 
-hook global BufWritePost .* %{
-    # Lint file on save
+hook global InsertKey .* %{
     lint
 }
 
-hook global BufWritePre .*.(js|go) %{
+hook global BufWritePre .* %{
     format
 }

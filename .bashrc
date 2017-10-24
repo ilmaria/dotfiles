@@ -27,7 +27,7 @@ alias _=sudo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g=git
 alias l='ls -lahF --group-directories-first'
-alias kak='$HOME/bin/kak'
+alias kak='$HOME/bin/kakoune'
 
 LC_CTYPE=fi_FI.UTF-8
 LC_NUMERIC=fi_FI.UTF-8

@@ -44,7 +44,7 @@ alias l='ls -lahF --group-directories-first'
 alias la='l'
 alias ll='ls -lh'
 alias ls='ls --color=auto'
-alias kak='$HOME/bin/kak'
+alias kak='$HOME/bin/kakoune'
 
 
 # Zsh plugins

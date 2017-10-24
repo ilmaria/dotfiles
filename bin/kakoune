@@ -7,7 +7,7 @@ command -v kak >/dev/null 2>&1 || {
 
 socket_file=$(kak -l | grep $USER)
 
-if [ -n "$socket_file" ]; then        
+if [ "$socket_file" != "$USER" ]; then        
     # Create new kakoune deamon for current dir
     kak -d -s $USER
 fi

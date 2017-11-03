@@ -5,9 +5,6 @@
 [push]
     default = simple
 
-[pull]
-    ff = only
-
 [merge]
     ff = false
     log = true # Include the summary of merged commits into all newly created merge commits.

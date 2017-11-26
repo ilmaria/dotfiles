@@ -103,3 +103,4 @@ setopt HIST_SAVE_NO_DUPS        # Don't write duplicate entries in the history f
 setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks before recording entry
 setopt HIST_VERIFY              # Don't execute immediately upon history expansion
 
+cd "/mnt/d/programming/"

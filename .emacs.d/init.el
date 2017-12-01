@@ -19,3 +19,32 @@
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "M-<left>") 'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
+
+;; Disable line wrap
+(set-default 'truncate-lines t)
+
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-f") 'isearch-forward)
+
+;; Disable tabs
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+
+;; Save backup files in emacs directory
+(setq backup-directory-alist
+      `(("." . "~/.emacs.d/backups")))
+
+(custom-set-variables '(inhibit-startup-screen t))
+
+;; Syntax highlighting
+(custom-set-faces
+  '(default ((t (:background "#fdf6e3" :foreground "#586e75"))))
+  '(font-lock-builtin-face ((t (:foreground "inherit"))))
+  '(font-lock-comment-face ((t (:foreground "#b58900"))))
+  '(font-lock-constant-face ((t (:foreground "inherit"))))
+  '(font-lock-doc-string-face ((t (:foreground "inherit"))))
+  '(font-lock-function-name-face ((t (:foreground "inherit"))))
+  '(font-lock-keyword-face ((t (:foreground "inherit"))))
+  '(font-lock-preprocessor-face ((t (:foreground "inherit"))))
+  '(font-lock-reference-face ((t (:foreground "inherit"))))
+  '(font-lock-string-face ((t (:foreground "inherit")))))

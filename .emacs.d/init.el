@@ -1,3 +1,8 @@
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
+(package-initialize)
+
 ;; Disable toolbar
 (tool-bar-mode -1)
 
@@ -34,7 +39,9 @@
 (setq backup-directory-alist
       `(("." . "~/.emacs.d/backups")))
 
-(custom-set-variables '(inhibit-startup-screen t))
+(custom-set-variables
+ '(inhibit-startup-screen t)
+ '(package-selected-packages (quote (dumb-jump))))
 
 ;; Syntax highlighting
 (custom-set-faces

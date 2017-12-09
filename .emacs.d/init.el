@@ -41,6 +41,6 @@
 
 (custom-set-variables
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote ((gruvbox-them dumb-jump))))
+ '(package-selected-packages (quote (gruvbox-theme dumb-jump))))
 
 (load-theme 'gruvbox-dark-medium t)

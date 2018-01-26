@@ -3,7 +3,7 @@ ENABLE_CORRECTION="true"
 
 
 # Exports
-export BROWSER='/usr/bin/chromium'
+export BROWSER='/usr/bin/firefox'
 export EDITOR='/usr/bin/vim'
 export RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 # Allows installing local dependencies with 'pip install -t .pip'

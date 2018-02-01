@@ -40,7 +40,7 @@ alias 9='cd -9'
 alias _=sudo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g=git
-alias l='ls -lahF --group-directories-first'
+alias l='ls -lahF --color=auto --group-directories-first'
 alias la='l'
 alias ll='ls -lh'
 alias ls='ls --color=auto'

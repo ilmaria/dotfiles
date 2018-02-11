@@ -23,7 +23,6 @@ PS2=' > '
 
 
 # Aliases
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ...=../..
 alias ....=../../..
 alias .....=../../../..
@@ -38,7 +37,7 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 alias _=sudo
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g=git
 alias l='ls -lahF --color=auto --group-directories-first'
 alias la='l'

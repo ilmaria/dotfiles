@@ -9,9 +9,9 @@ case $- in
 esac
 
 export DISPLAY=:0
+export BROWSER="firefox"
 
 # Aliases
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias 1='cd -'
@@ -24,10 +24,13 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 alias _=sudo
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g=git
-alias l='ls -lahF --group-directories-first'
+alias l='ls -lahF --color=auto --group-directories-first'
 alias kak='$HOME/bin/kakoune'
+
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
 
 LC_CTYPE=fi_FI.UTF-8
 LC_NUMERIC=fi_FI.UTF-8

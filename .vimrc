@@ -24,6 +24,9 @@ set shiftwidth=4
 set expandtab
 set smarttab
 
+" Make backspace great again
+set backspace=indent,eol,start
+
 " Enable mouse control in all modes
 set mouse=a
 

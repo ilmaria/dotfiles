@@ -45,6 +45,7 @@
     dmenu
     xlibs.xmessage    # This is needed for xmobar
     ripgrep
+    vlc
   ];
 
   environment.variables = {

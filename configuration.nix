@@ -24,15 +24,18 @@
 
   time.timeZone = "Europe/Helsinki";
 
-  hardware.pulseaudio = {
+  hardware.pulseaudio.enable = true;
+
+  sound = {
     enable = true;
-    package = pkgs.pulseaudioFull;
+    mediaKeys.enable = true;
+    mediaKeys.volumeStep = "1%";
   };
 
   environment.systemPackages = with pkgs; [
     wget
     curl
-    vim_configurable  #vim with cliboard support (also depends on X11)
+    vim_configurable  # vim with cliboard support (also depends on X11)
     git
     firefox
     rxvt_unicode
@@ -40,6 +43,8 @@
     elvish
     chromium
     dmenu
+    xlibs.xmessage    # This is needed for xmobar
+    ripgrep
   ];
 
   environment.variables = {
@@ -75,8 +80,16 @@
 
     layout = "fi";
     videoDrivers = [ "nvidia" ];
+ 
+    config = ''
+      Section "Screen"
+          Identifier "Screen0"
+          Option     "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+          Option     "AllowIndirectGLXProtocol" "off"
+          Option     "TripleBuffer" "on"
+      EndSection
+    '';
   };
-
 
   #services.redshift = {
   #  enable = true;

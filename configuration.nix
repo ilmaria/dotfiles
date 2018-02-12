@@ -80,6 +80,7 @@
 
     layout = "fi";
     videoDrivers = [ "nvidia" ];
+    xautolock.enable = false;
  
     config = ''
       Section "Screen"
@@ -87,6 +88,19 @@
           Option     "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
           Option     "AllowIndirectGLXProtocol" "off"
           Option     "TripleBuffer" "on"
+      EndSection
+
+      Section "Monitor"
+          Identifier "LVDS0"
+          Option     "DPMS" "false"
+      EndSection
+
+      Section "ServerLayout"
+          Identifier "ServerLayout0"
+          Option     "StandbyTime" "0"
+          Option     "SuspendTime" "0"
+          Option     "OffTime"     "0"
+          Option     "BlankTime"   "0"
       EndSection
     '';
   };

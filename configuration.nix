@@ -14,7 +14,6 @@
   nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "ilmari-nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
   i18n = {
@@ -23,7 +22,6 @@
     defaultLocale = "en_DK.UTF-8";
   };
 
-  # Set your time zone.
   time.timeZone = "Europe/Helsinki";
 
   hardware.pulseaudio = {
@@ -31,15 +29,17 @@
     package = pkgs.pulseaudioFull;
   };
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     wget
     curl
-    vim
+    vim_configurable  #vim with cliboard support (also depends on X11)
     git
     firefox
     rxvt_unicode
+    keepass
+    elvish
+    chromium
+    dmenu
   ];
 
   environment.variables = {
@@ -55,6 +55,10 @@
 
     windowManager = {
       xmonad.enable = true;
+      xmonad.enableContribAndExtras = true;
+      xmonad.extraPackages = haskellPackages: [
+        haskellPackages.xmobar
+      ];
       default = "xmonad";
     };
 

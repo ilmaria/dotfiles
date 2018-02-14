@@ -44,8 +44,10 @@
     chromium
     dmenu
     xlibs.xmessage    # This is needed for xmobar
+    xlibs.xset
     ripgrep
     vlc
+    feh
   ];
 
   environment.variables = {
@@ -77,6 +79,12 @@
       slim.enable = true;
       slim.defaultUser = "ilmari";
       slim.autoLogin = true;
+      sessionCommands = ''
+        # Set keyboard repeat rate
+        ${pkgs.xlibs.xset}/bin/xset r rate 185 35
+
+        ${pkgs.feh}/bin/feh --bg-scale ~/wallpapers/current.*
+      '';
     };
 
     layout = "fi";

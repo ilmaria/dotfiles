@@ -13,7 +13,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = "ilmari-nixos"; # Define your hostname.
+  networking.hostName = "ilmari-nixos";
 
   # Select internationalisation properties.
   i18n = {
@@ -32,27 +32,34 @@
     mediaKeys.volumeStep = "1%";
   };
 
-  environment.systemPackages = with pkgs; [
-    wget
-    curl
-    vim_configurable  # vim with cliboard support (also depends on X11)
-    git
-    firefox
-    rxvt_unicode
-    keepass
-    elvish
-    chromium
-    dmenu
-    xlibs.xmessage    # This is needed for xmobar
-    xlibs.xset
-    ripgrep
-    vlc
-    feh
-  ];
+  environment = with pkgs; {
+    systemPackages = [ 
+      wget
+      curl
+      vim_configurable  # vim with cliboard support (also depends on X11)
+      git
+      firefox
+      rxvt_unicode
+      keepass
+      chromium
+      dmenu
+      xlibs.xmessage    # This is needed for xmobar
+      xlibs.xset
+      ripgrep
+      vlc
+      feh
+    ];
+    variables = {
+      EDITOR = "vim";
+      BROWSER = "firefox";
+    };
+    shells = [ elvish ];
+  };
 
-  environment.variables = {
-    EDITOR = "vim";
-    BROWSER = "firefox";
+  nixpkgs.config.packageOverrides = pkgs: {
+    elvish = pkgs.elvish.overrideAttrs (oldAttrs: {
+      shellPath = "/bin/elvish";
+    });
   };
 
   programs.bash.enableCompletion = true;
@@ -122,6 +129,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ilmari = {
+    shell = pkgs.elvish;
     isNormalUser = true;
     createHome = true;
     home = "/home/ilmari";

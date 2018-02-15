@@ -96,7 +96,7 @@
       slim.autoLogin = true;
       sessionCommands = ''
         # Set keyboard repeat rate
-        ${pkgs.xlibs.xset}/bin/xset r rate 185 35
+        ${pkgs.xlibs.xset}/bin/xset r rate 190 30 &
 
         ${pkgs.feh}/bin/feh --no-fehbg --bg-scale ~/wallpapers/current.* &
       '';

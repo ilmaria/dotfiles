@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }:
 
 {
@@ -11,9 +7,9 @@
 
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
-  nixpkgs.config.allowUnfree = true;
-
   networking.hostName = "ilmari-nixos";
+
+  system.autoUpgrade.enable = true;
 
   # Select internationalisation properties.
   i18n = {
@@ -48,18 +44,30 @@
       ripgrep
       vlc
       feh
+      haskellPackages.xmobar
+      unstable.elvish
     ];
     variables = {
       EDITOR = "vim";
       BROWSER = "firefox";
     };
-    shells = [ elvish ];
+    shells = [ unstable.elvish ];
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    elvish = pkgs.elvish.overrideAttrs (oldAttrs: {
-      shellPath = "/bin/elvish";
-    });
+  nixpkgs.config = {
+    allowUnfree = true;
+    
+    packageOverrides = pkgs: {
+      unstable = import <nixos-unstable> {
+        # Pass the nixpkgs config to the unstable alias
+        # to ensure `allowUnfree = true;` is propagated:
+        config = config.nixpkgs.config;
+        } // {
+        elvish = pkgs.elvish.overrideAttrs (old: {
+          shellPath = "/bin/elvish";
+        });
+      };
+    };
   };
 
   programs.bash.enableCompletion = true;
@@ -90,7 +98,7 @@
         # Set keyboard repeat rate
         ${pkgs.xlibs.xset}/bin/xset r rate 185 35
 
-        ${pkgs.feh}/bin/feh --bg-scale ~/wallpapers/current.*
+        ${pkgs.feh}/bin/feh --no-fehbg --bg-scale ~/wallpapers/current.* &
       '';
     };
 
@@ -129,7 +137,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ilmari = {
-    shell = pkgs.elvish;
+    shell = pkgs.unstable.elvish;
     isNormalUser = true;
     createHome = true;
     home = "/home/ilmari";

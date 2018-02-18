@@ -14,7 +14,8 @@
   # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "fi";
+    # consoleKeyMap = "fi";
+    consoleUseXkbConfig = true;
     defaultLocale = "en_DK.UTF-8";
   };
 
@@ -104,29 +105,25 @@
     };
 
     layout = "fi";
+    xkbVariant = "nodeadkeys";
     videoDrivers = [ "nvidia" ];
     xautolock.enable = false;
  
-    config = ''
-      Section "Screen"
-          Identifier "Screen0"
-          Option     "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
-          Option     "AllowIndirectGLXProtocol" "off"
-          Option     "TripleBuffer" "on"
-      EndSection
+    screenSection = ''
+      Option "metamodes"                "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+      Option "AllowIndirectGLXProtocol" "off"
+      Option "TripleBuffer"             "on"
+    '';
 
-      Section "Monitor"
-          Identifier "LVDS0"
-          Option     "DPMS" "false"
-      EndSection
+    monitorSection = ''
+      Option "DPMS" "false"
+    '';
 
-      Section "ServerLayout"
-          Identifier "ServerLayout0"
-          Option     "StandbyTime" "0"
-          Option     "SuspendTime" "0"
-          Option     "OffTime"     "0"
-          Option     "BlankTime"   "0"
-      EndSection
+    serverLayoutSection = ''
+      Option "StandbyTime" "0"
+      Option "SuspendTime" "0"
+      Option "OffTime"     "0"
+      Option "BlankTime"   "0"
     '';
   };
 

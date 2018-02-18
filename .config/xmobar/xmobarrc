@@ -1,16 +1,22 @@
 Config 
     { font = "xft:Roboto"
+      additionalFonts = ["xft:Roboto Mono"]
     , bgColor = "#282828"
     , fgColor = "#ebdbb2"
     , position = BottomSize C 100 38
     , commands =
-            [ Run Cpu ["-L","3","-H","50","--normal","#98971a","--high","#cc241d"] 10
+            [ Run Cpu [
+                "-L", "3",
+                "-H", "50",
+                "--normal", "#98971a",
+                "--high", "#cc241d"
+            ] 10
             , Run Memory ["-t","Mem: <usedratio>%"] 10
-            , Run Volume "default" "Master" [] 0
+            , Run PipeReader "[---?---]:/tmp/xmobar-volumebar" "vol"
             , Run Date "%a %d.%m. | <fc=#fabd2f>%H:%M</fc>" "date" 10
             , Run StdinReader
             ]
     , sepChar = "%"
     , alignSep = "}{"
-    , template = " %StdinReader% }{ %cpu% | %memory% | %volume% | %date%  "
+    , template = " %StdinReader% }{ %cpu% | %memory% | <fn=1>%vol%</fn> | %date%  "
     }

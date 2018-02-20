@@ -41,6 +41,7 @@
       keepass
       ripgrep
       rxvt_unicode
+      unstable.stack
       unstable.elvish
       vim_configurable  # vim with cliboard support (also depends on X11)
       vlc

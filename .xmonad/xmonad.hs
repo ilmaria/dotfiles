@@ -28,8 +28,8 @@ main = xmonad $ do
         ("M-3",                    spawn "urxvt"),
         ("C-M1-a",                 spawn "keepass --auto-type"),
         ("M1-<F4>",                kill),
-        ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 5%+"),
-        ("<XF86AudioLowerVolume>", spawn "amixer sset Master 5%-"),
+        ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 3%+"),
+        ("<XF86AudioLowerVolume>", spawn "amixer sset Master 3%-"),
         ("M-<Right>",              nextWS),
         ("M-<Left>",               prevWS)
         ]

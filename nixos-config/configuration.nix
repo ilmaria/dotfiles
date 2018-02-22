@@ -1,6 +1,15 @@
 { config, pkgs, lib, ... }:
 
-{
+let 
+  baseConfig = {
+    allowUnfree = true;
+  };
+  unstable = import <nixos-unstable> {
+    # Pass the nixpkgs config to the unstable alias
+    # to ensure `allowUnfree = true;` is propagated:
+    config = baseConfig;
+  };
+in {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -42,7 +51,7 @@
       ripgrep
       rxvt_unicode
       unstable.stack
-      unstable.elvish
+      elvish
       vim_configurable  # vim with cliboard support (also depends on X11)
       vlc
       vscode
@@ -54,22 +63,16 @@
       EDITOR = "vim";
       BROWSER = "firefox";
     };
-    shells = [ unstable.elvish ];
+    shells = [ elvish ];
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    
+  nixpkgs.config = baseConfig // {
     packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        # Pass the nixpkgs config to the unstable alias
-        # to ensure `allowUnfree = true;` is propagated:
-        config = config.nixpkgs.config;
-        } // {
-        elvish = pkgs.elvish.overrideAttrs (old: {
-          shellPath = "/bin/elvish";
-        });
-      };
+      inherit unstable;
+
+      elvish = unstable.elvish.overrideAttrs (old: {
+        shellPath = "/bin/elvish";
+      });
     };
   };
 
@@ -136,7 +139,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ilmari = {
-    shell = pkgs.unstable.elvish;
+    shell = pkgs.elvish;
     isNormalUser = true;
     createHome = true;
     home = "/home/ilmari";

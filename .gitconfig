@@ -50,3 +50,5 @@
 
 [core]
     editor = vim
+[url "https://bfceb10d8c2eb6c11971f9e328090a45be9274d0:x-oauth-basic@github.com/"]
+	insteadOf = https://github.com/

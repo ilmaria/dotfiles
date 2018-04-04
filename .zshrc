@@ -11,7 +11,7 @@ export PYTHONPATH="./.pip:$PYTHONPATH"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin
+PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin:/usr/local/go/bin:$HOME/go/bin
 
 if [ -d "/opt/android-sdk/platform-tools" ]
 then
@@ -98,3 +98,6 @@ setopt HIST_SAVE_NO_DUPS        # Don't write duplicate entries in the history f
 setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks before recording entry
 setopt HIST_VERIFY              # Don't execute immediately upon history expansion
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

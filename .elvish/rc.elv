@@ -6,6 +6,7 @@ E:BROWSER='/usr/bin/firefox'
 E:EDITOR='/usr/bin/vim'
 E:RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 E:NVM_DIR="~/.nvm"
+E:GOPATH="/Users/223961/go"
 
 # Allows installing local dependencies with 'pip install -t .pip'
 E:PYTHONPATH="./.pip:$E:PYTHONPATH" 
@@ -14,12 +15,12 @@ E:PYTHONPATH="./.pip:$E:PYTHONPATH"
 E:ERL_AFLAGS="-kernel shell_history enabled"
 
 paths = [
-    $@paths
+    /usr/local/bin
     ~/bin
     ~/.npm-global
     ~/go/bin
-    /usr/local/bin
     /usr/local/go/bin
+    $@paths
 ]
 
 fn l [@args]{
@@ -34,7 +35,10 @@ fn g [@args]{
     git $@args
 }
 
+fn npm [@args]{
+    bash -c "source "$E:NVM_DIR/nvm.sh" && npm "(joins " " $args)
+}
+
 fn nvm [@args]{
-    cmd = ""
-    bash -c "nvm $@" $@args
+    bash -c "source "$E:NVM_DIR/nvm.sh" && nvm "(joins " " $args)
 }

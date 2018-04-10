@@ -10,8 +10,9 @@ export RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/ru
 export PYTHONPATH="./.pip:$PYTHONPATH" 
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
+export GOPATH="/Users/223961/go"
 
-PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin:/usr/local/go/bin:$HOME/go/bin
+PATH=/usr/local/bin:$PATH:$HOME/bin:$HOME/.npm-global/bin:/usr/local/go/bin:$HOME/go/bin
 
 if [ -d "/opt/android-sdk/platform-tools" ]
 then
@@ -39,21 +40,12 @@ alias 9='cd -9'
 alias _=sudo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g=git
-alias l='ls -lahF --color=auto --group-directories-first'
-alias la='l'
-alias ll='ls -lh'
-alias ls='ls --color=auto'
+alias l='ls -lahF'
 alias kak='$HOME/bin/kakoune'
 
 
 # Zsh plugins
-if [ -d '/usr/share/zsh/plugins' ]
-then
-    plugins='/usr/share/zsh/plugins'
-else
-    plugins='/usr/share'
-fi
-
+plugins='/usr/local/share'
 source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Completions path

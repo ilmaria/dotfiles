@@ -13,6 +13,7 @@ in {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.useOSProber = true;
 
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
@@ -48,6 +49,8 @@ in {
       git
       haskellPackages.xmobar
       keepass
+      libnotify
+      notify-osd
       ripgrep
       rxvt_unicode
       unstable.stack
@@ -100,10 +103,13 @@ in {
       slim.enable = true;
       slim.defaultUser = "ilmari";
       slim.autoLogin = true;
+      slim.extraConfig = "numlock  on";
       sessionCommands = ''
         # Set keyboard repeat rate
-        ${pkgs.xlibs.xset}/bin/xset r rate 190 30 &
-
+        ${pkgs.xlibs.xset}/bin/xset r rate 190 30
+        # Set mouse speed to 1
+        ${pkgs.xlibs.xset}/bin/xset m 1
+        # Select  wallpaper
         ${pkgs.feh}/bin/feh --no-fehbg --bg-scale ~/wallpapers/current.* &
       '';
     };

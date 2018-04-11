@@ -19,7 +19,7 @@ paths = [
 ]
 
 fn l [@args]{
-    e:ls -lahF --color=auto --group-directories-first $@args
+    exa --long --all --group-directories-first $@args
 }
 
 fn dotfiles [@args]{

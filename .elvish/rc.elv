@@ -41,11 +41,10 @@ use github.com/zzamboni/elvish-modules/dir
 edit:insert:binding[Alt-a] = $dir:history-chooser~
 
 # Custom prompt
-edit:prompt = { put (edit:styled "\n"(path-base $pwd)" > " lightyellow) }
+edit:prompt = { edit:styled (path-base $pwd)" > " lightyellow }
 
 # A matcher that tries the following matchers: prefix match, smart-case
 # prefix match, substring match, smart-case substring match,
 # subsequence match and smart-case subsequence match.
 use github.com/xiaq/edit.elv/smart-matcher
-#smart-matcher:apply
-edit:completion:matcher[''] = [p]{ edit:match-prefix &smart-case $p }
+smart-matcher:apply

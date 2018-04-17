@@ -11,9 +11,9 @@ import XMonad.Hooks.ManageDocks (ToggleStruts(..))
 import XMonad.Layout.Fullscreen (fullscreenSupport)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Tabbed (simpleTabbed)
-import XMonad.Layout.Spacing (spacing, spacingWithEdge, setSpacing)
+import XMonad.Layout.Spacing (spacing, spacingWithEdge, setSpacing, incSpacing)
 
-mySpacing = 7
+mySpacing = 15
 
 main = xmonad $ do
     modMask =: mod4Mask
@@ -28,17 +28,19 @@ main = xmonad $ do
     applyIO $ withWindowNavigation (xK_w, xK_a, xK_s, xK_d)
     applyIO $ statusBar "xmobar" statusPP toggleStatusKey
     keys =+ [
-        ("M-2",                    spawn "firefox"),
-        ("M-3",                    spawn "urxvt"),
-        ("C-M1-a",                 spawn "keepass --auto-type"),
-        ("M1-<F4>",                kill),
-        ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 3%+"),
-        ("<XF86AudioLowerVolume>", spawn "amixer sset Master 3%-"),
-        ("M-<Right>",              nextWS),
-        ("M-<Left>",               prevWS),
-        ("M-n",                    sendMessage ToggleStruts),
-        ("M-i",                    setSpacing 0),
-        ("M-o",                    setSpacing mySpacing)
+          ("M-2",                    spawn "firefox")
+        , ("M-3",                    spawn "urxvt")
+        , ("C-M1-a",                 spawn "keepass --auto-type")
+        , ("M1-<F4>",                kill)
+        , ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 3%+")
+        , ("<XF86AudioLowerVolume>", spawn "amixer sset Master 3%-")
+        , ("M-<Right>",              nextWS)
+        , ("M-<Left>",               prevWS)
+        , ("M-n",                    sendMessage ToggleStruts)
+        , ("M-i",                    setSpacing 0)
+        , ("M-o",                    setSpacing mySpacing)
+        , ("M-<KP_Add>",             incSpacing (1))
+        , ("M-<KP_Subtract>",        incSpacing (-1))
         ]
 
 statusPP = xmobarPP {

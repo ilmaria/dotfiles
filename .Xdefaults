@@ -1,7 +1,7 @@
 ! General urxvt settings
-URxvt*scrollBar:            false
-URxvt*scrollBar_right:      false
-URxvt*transparent:          false
+URxvt.scrollBar:            false
+URxvt.scrollBar_right:      false
+URxvt.transparent:          false
 URxvt.font:                 xft:Roboto Mono
 URxvt.iso14755:             false
 URxvt.perl-ext-common:      default,matcher,clipboard
@@ -11,6 +11,7 @@ URxvt.cursorBlink:          1
 URxvt.internalBorder:       30
 URxvt.geometry:             100x34
 URxvt.saveLines:            9999 
+URxvt.e:                    elvish 
 
 ! Copy paste settings
 URxvt.clipboard.autocopy:   true
@@ -52,32 +53,3 @@ URxvt.keysym.Control-Right: \033[1;5C
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
-
-#! Colors
-#*.foreground:               #93a1a1
-#*.background:               #002b36
-#*.cursorColor:              #93a1a1
-#! Black
-#*.color0:                   #002b36
-#*.color8:                   #657b83
-#! Red
-#*.color1:                   #dc322f
-#*.color9:                   #dc322f
-#! Green
-#*.color2:                   #859900
-#*.color10:                  #859900
-#! Yellow
-#*.color3:                   #b58900
-#*.color11:                  #b58900
-#! Blue
-#*.color4:                   #268bd2
-#*.color12:                  #268bd2
-#! Magenta
-#*.color5:                   #6c71c4
-#*.color13:                  #6c71c4
-#! Cyan
-#*.color6:                   #2aa198
-#*.color14:                  #2aa198
-#! White
-#*.color7:                   #93a1a1
-#*.color15:                  #fdf6e3

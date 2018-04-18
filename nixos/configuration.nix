@@ -10,6 +10,8 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
+  boot.cleanTmpDir = true;
+
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
   networking.hostName = "ilmari-nixos";

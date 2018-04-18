@@ -24,8 +24,8 @@ export LESS="        \
 
 PATH=$HOME/bin:$HOME/.npm-global/bin:$PATH
 
-yellow="\e[93m"
-end_color="\e[m"
+yellow="\[\e[93m\]"
+end_color="\[\e[m\]"
 
 PS1="$yellow\n\W > $end_color"
 PS2="$yellow > $end_color"

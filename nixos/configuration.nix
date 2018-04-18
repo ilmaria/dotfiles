@@ -48,6 +48,7 @@ in {
     libnotify
     notify-osd
     ripgrep
+    rustup
     rxvt_unicode
     unstable.stack
     vim_configurable  # vim with cliboard support (also depends on X11)
@@ -73,6 +74,7 @@ in {
 
   programs.bash.enableCompletion = true;
   programs.ssh.startAgent = true;
+  programs.spacefm.enable = true;
 
   services.compton.enable = true;
 

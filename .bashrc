@@ -1,68 +1,67 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-export DISPLAY=:0
 export BROWSER="firefox"
+export LANG="en_DK.UTF-8"
+export EDITOR="vim"
+export VISUAL="vim"
+# Enable erlang shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# --ignore-case     Ignore case when searching
+# --jump-target=12  Show lines above search results when jumping to next result
+# --shift=1         Horizontal scroll speed 
+# -R                Show colors
+export LESS="        \
+    --ignore-case    \
+    --jump-target=12 \
+    --shift=1        \
+    -R               \
+"
+
+PATH=$HOME/bin:$HOME/.npm-global/bin:$PATH
+
+yellow="\e[93m"
+end_color="\e[m"
+
+PS1="$yellow\n\W > $end_color"
+PS2="$yellow > $end_color"
 
 # Aliases
 alias ..='cd ..'
 alias ...='cd ../..'
-alias 1='cd -'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9'
-alias _=sudo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g=git
-alias l='ls -lahF --color=auto --group-directories-first'
 alias kak='$HOME/bin/kakoune'
+
+if command -v exa >/dev/null 2>&1; then
+    alias l='exa --long --all --group-directories-first'
+else
+    alias l='ls -lahF --color=auto --group-directories-first'
+fi
 
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 
-LC_CTYPE=fi_FI.UTF-8
-LC_NUMERIC=fi_FI.UTF-8
-LC_TIME=fi_FI.UTF-8
-LC_COLLATE=fi_FI.UTF-8
-LC_MONETARY=fi_FI.UTF-8
-LC_PAPER=fi_FI.UTF-8
-LC_NAME=fi_FI.UTF-8
-LC_ADDRESS=fi_FI.UTF-8
-LC_TELEPHONE=fi_FI.UTF-8
-LC_MEASUREMENT=fi_FI.UTF-8
-LC_IDENTIFICATION=fi_FI.UTF-8
-# LC_MESSAGES="en_US.UTF-8"
-
-shopt -s histappend   # append to the history file, don't overwrite it
+shopt -s histappend  # Append to the history file, don't overwrite it
 shopt -s histverify  # Don't execute immediately upon history expansion
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 HISTSIZE=10000
 HISTFILESIZE=20000
+HISTFILE="$HOME/.history_bash"
 
-# check the window size after each command and, if necessary,
+# Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
-
-PS1="\n\W \$ "
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

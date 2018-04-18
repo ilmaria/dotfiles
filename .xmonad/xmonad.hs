@@ -28,6 +28,9 @@ main = xmonad $ do
     applyIO $ withWindowNavigation (xK_w, xK_a, xK_s, xK_d)
     manageHook =+ composeAll
         [ appName =? "xmessage" --> doFloat
+        , appName =? "spacefm"  --> doFloat
+        , appName =? "feh"      --> doFloat
+        , appName =? "vlc"      --> doFloat
         ]
     keys =+
         [ ("M-2",                    spawn "firefox")

@@ -31,7 +31,7 @@ paths = [
 
 # Aliases and functions
 fn l [@args]{
-    e:ls -lahF $@args
+    exa --long --all --group-directories-first $@args
 }
 
 fn dotfiles [@args]{

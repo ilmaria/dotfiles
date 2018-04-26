@@ -1,0 +1,20 @@
+#!/bin/sh
+
+GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Search for issue name in the git branch.
+ISSUE=$(egrep -o '^\w-[1-9][0-9]*' "$GIT_BRANCH")
+
+case "$GIT_BRANCH" in
+    # If the branch is one of these, do nothing.
+    master|staging|qa|portfolio)
+        exit 0
+        ;;
+esac
+
+if [ -z "$ISSUE" ]; then
+    echo "Current git branch is missing issue name. You can commit with flag '--no-verify'." >&2
+    exit 1
+fi
+
+

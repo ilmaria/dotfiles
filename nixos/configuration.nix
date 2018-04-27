@@ -69,7 +69,6 @@ in {
       EDITOR = "vim";
       BROWSER = "firefox";
     };
-    shells = [ (import ./elvish.nix) ];
   };
 
   # nixpkgs.config = baseConfig // {
@@ -146,7 +145,6 @@ in {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ilmari = {
-    shell = (import ./elvish.nix);
     isNormalUser = true;
     createHome = true;
     home = "/home/ilmari";

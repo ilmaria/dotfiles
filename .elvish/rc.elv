@@ -55,7 +55,9 @@ use github.com/zzamboni/elvish-modules/dir
 edit:insert:binding[Alt-a] = $dir:history-chooser~
 
 # Custom prompt
+use git-prompt
 edit:prompt = { edit:styled (path-base $pwd)" > " lightyellow }
+edit:rprompt = (git-prompt:prompt)
 
 # A matcher that tries the following matchers: prefix match, smart-case
 # prefix match, substring match, smart-case substring match,

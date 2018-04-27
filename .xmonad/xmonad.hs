@@ -26,8 +26,14 @@ main = xmonad $ do
     modifyLayout smartBorders
     apply fullscreenSupport
     applyIO $ withWindowNavigation (xK_w, xK_a, xK_s, xK_d)
-    keys =+ [
-          ("M-2",                    spawn "firefox")
+    manageHook =+ composeAll
+        [ appName =? "xmessage" --> doFloat
+        , appName =? "spacefm"  --> doFloat
+        , appName =? "feh"      --> doFloat
+        , appName =? "vlc"      --> doFloat
+        ]
+    keys =+
+        [ ("M-2",                    spawn "firefox")
         , ("M-3",                    spawn "urxvt")
         , ("C-M1-a",                 spawn "keepass --auto-type")
         , ("M1-<F4>",                kill)

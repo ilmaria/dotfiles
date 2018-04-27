@@ -1,19 +1,16 @@
 { config, pkgs, lib, ... }:
 
-let 
-  baseConfig = {
-    allowUnfree = true;
-  };
+let
   unstable = import <nixos-unstable> {
-    # Pass the nixpkgs config to the unstable alias
-    # to ensure `allowUnfree = true;` is propagated:
-    config = baseConfig;
+    config.allowUnfree = true;
   };
 in {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
+
+  boot.cleanTmpDir = true;
 
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
@@ -24,52 +21,48 @@ in {
   system.autoUpgrade.enable = true;
 
   # Select internationalisation properties.
-  i18n = {
-    consoleFont = "Lat2-Terminus16";
-    # consoleKeyMap = "fi";
-    consoleUseXkbConfig = true;
-    defaultLocale = "en_DK.UTF-8";
-  };
+  i18n.consoleFont = "Lat2-Terminus16";
+  #i18n.consoleKeyMap = "fi";
+  i18n.consoleUseXkbConfig = true;
+  i18n.defaultLocale = "en_DK.UTF-8";
 
   time.timeZone = "Europe/Helsinki";
 
   hardware.pulseaudio.enable = true;
 
-  sound = {
-    enable = true;
-    mediaKeys.enable = true;
-    mediaKeys.volumeStep = "1%";
-  };
+  sound.enable = true;
+  sound.mediaKeys.enable = true;
+  sound.mediaKeys.volumeStep = "1%";
 
-  environment = with pkgs; {
-    systemPackages = [ 
-      (import ./elvish.nix)
-      chromium
-      curl
-      dmenu
-      exa
-      feh
-      firefox
-      git
-      haskellPackages.xmobar
-      keepass
-      libnotify
-      notify-osd
-      ripgrep
-      rxvt_unicode
-      unstable.stack
-      vim_configurable  # vim with cliboard support (also depends on X11)
-      vlc
-      vscode
-      wget
-      xlibs.xmessage    # This is needed for xmobar
-      xlibs.xset
-    ];
-    variables = {
-      EDITOR = "vim";
-      BROWSER = "firefox";
-    };
+  environment.systemPackages = with pkgs; [ 
+    (import ./elvish.nix)
+    chromium
+    curl
+    dmenu
+    exa
+    feh
+    firefox
+    git
+    haskellPackages.xmobar
+    keepass
+    libnotify
+    notify-osd
+    ripgrep
+    rustup
+    rxvt_unicode
+    unstable.stack
+    vim_configurable  # vim with cliboard support (also depends on X11)
+    vlc
+    vscode
+    wget
+    xlibs.xmessage    # This is needed for xmobar
+    xlibs.xset
+  ];
+  environment.variables = {
+    EDITOR = "vim";
+    BROWSER = "firefox";
   };
+  environment.shells = [ (import ./elvish.nix) ];
 
   # nixpkgs.config = baseConfig // {
   #   packageOverrides = pkgs: {
@@ -81,61 +74,57 @@ in {
 
   programs.bash.enableCompletion = true;
   programs.ssh.startAgent = true;
+  programs.spacefm.enable = true;
 
-  services.xserver = {
-    enable = true;
+  services.compton.enable = true;
 
-    windowManager = {
-      xmonad.enable = true;
-      xmonad.enableContribAndExtras = true;
-      xmonad.extraPackages = haskellPackages: [
-        haskellPackages.xmobar
-      ];
-      default = "xmonad";
-    };
-
-    desktopManager = {
-      default = "none";
-      xterm.enable = false;
-    };
-    
-    displayManager = {
-      slim.enable = true;
-      slim.defaultUser = "ilmari";
-      slim.autoLogin = true;
-      slim.extraConfig = "numlock  on";
-      sessionCommands = ''
-        # Set keyboard repeat rate
-        ${pkgs.xlibs.xset}/bin/xset r rate 190 30
-        # Set mouse speed to 1
-        ${pkgs.xlibs.xset}/bin/xset m 1
-        # Select  wallpaper
-        ${pkgs.feh}/bin/feh --no-fehbg --bg-scale ~/wallpapers/current.* &
-      '';
-    };
-
-    layout = "fi";
-    xkbVariant = "nodeadkeys";
-    videoDrivers = [ "nvidia" ];
-    xautolock.enable = false;
- 
-    screenSection = ''
-      Option "metamodes"                "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
-      Option "AllowIndirectGLXProtocol" "off"
-      Option "TripleBuffer"             "on"
-    '';
-
-    monitorSection = ''
-      Option "DPMS" "false"
-    '';
-
-    serverLayoutSection = ''
-      Option "StandbyTime" "0"
-      Option "SuspendTime" "0"
-      Option "OffTime"     "0"
-      Option "BlankTime"   "0"
+  services.xserver.enable = true;
+  services.xserver.windowManager = {
+    xmonad.enable = true;
+    xmonad.enableContribAndExtras = true;
+    xmonad.extraPackages = haskellPackages: [
+      haskellPackages.xmobar
+    ];
+    default = "xmonad";
+  };
+  services.xserver.desktopManager = {
+    default = "none";
+    xterm.enable = false;
+  };
+  services.xserver.displayManager = {
+    slim.enable = true;
+    slim.defaultUser = "ilmari";
+    slim.autoLogin = true;
+    slim.extraConfig = "numlock  on";
+    sessionCommands = ''
+      # Set keyboard repeat rate
+      ${pkgs.xlibs.xset}/bin/xset r rate 190 30
+      # Set mouse speed to 1
+      ${pkgs.xlibs.xset}/bin/xset m 1
+      # Select  wallpaper
+      ${pkgs.feh}/bin/feh --no-fehbg --bg-scale ~/wallpapers/current.* &
     '';
   };
+
+  services.xserver.layout = "fi";
+  services.xserver.xkbVariant = "nodeadkeys";
+  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.xautolock.enable = false;
+
+  services.xserver.screenSection = ''
+    Option "metamodes"                "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    Option "AllowIndirectGLXProtocol" "off"
+    Option "TripleBuffer"             "on"
+  '';
+  services.xserver.monitorSection = ''
+    Option "DPMS" "false"
+  '';
+  services.xserver.serverLayoutSection = ''
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime"     "0"
+    Option "BlankTime"   "0"
+  '';
 
   #services.redshift = {
   #  enable = true;
@@ -145,6 +134,7 @@ in {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ilmari = {
+    shell = (import ./elvish.nix);
     isNormalUser = true;
     createHome = true;
     home = "/home/ilmari";

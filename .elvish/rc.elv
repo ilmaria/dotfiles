@@ -10,12 +10,16 @@ use github.com/zzamboni/elvish-completions/git
 E:BROWSER='firefox'
 E:EDITOR='vim'
 E:RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-# Case insensitive search unless one of the characters is in uppercase
-E:LESS = "-i"
 # Allows installing local dependencies with 'pip install -t .pip'
 E:PYTHONPATH="./.pip:$E:PYTHONPATH" 
 # Enable erlang shell history
 E:ERL_AFLAGS="-kernel shell_history enabled"
+E:LESS = (joins " " [
+    "--ignore-case"
+    "--jump-target=12"
+    "--shift=1"
+    "-R"
+])
 
 paths = [
     $@paths

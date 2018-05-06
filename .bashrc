@@ -12,12 +12,12 @@ export VISUAL="vim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # --ignore-case     Ignore case when searching
-# --jump-target=12  Show lines above search results when jumping to next result
+# --jump-target=N   Show lines above search results when jumping to next result
 # --shift=1         Horizontal scroll speed 
 # -R                Show colors
 export LESS="        \
     --ignore-case    \
-    --jump-target=12 \
+    --jump-target=5  \
     --shift=1        \
     -R               \
 "

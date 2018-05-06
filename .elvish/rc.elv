@@ -16,7 +16,7 @@ E:PYTHONPATH="./.pip:$E:PYTHONPATH"
 E:ERL_AFLAGS="-kernel shell_history enabled"
 E:LESS = (joins " " [
     "--ignore-case"
-    "--jump-target=12"
+    "--jump-target=5"
     "--shift=1"
     "-R"
 ])

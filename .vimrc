@@ -1,12 +1,3 @@
-" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-"  call plug#begin('~/.local/share/nvim/plugged')
-
-"  Plug 'terryma/vim-multiple-cursors'
-
-"  Plug 'jiangmiao/auto-pairs'
-
-"  call plug#end()
-
 " Syntax highlighting
 syntax on
 
@@ -37,12 +28,6 @@ set path+=**
 " Show column and row count on status line
 set ruler
 
-" Make space nop
-nnoremap <SPACE> :
-
-" Map <leader> to space
-let mapleader=","
-
 " Shortcut f" Show line numbers
 set number
 
@@ -70,27 +55,29 @@ set incsearch
 " highlight results
 set hlsearch
 
+" Case insensitive search with
+set ignorecase
+
 " Update opened file when it has been modified outside of vim
 set autoread
-
-" Move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
 
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
 
 " Remap some Finnish keyboard keys to match US layout 
-nmap å {
-nmap ä }
-nmap ÅÅ [[
-nmap ÄÄ ]]
-nmap ö :
+nnoremap å {
+nnoremap ä }
+nnoremap ÅÅ [[
+nnoremap ÄÄ ]]
+nnoremap ö :
+
+nnoremap <Space> :
+cnoremap <Space><Space> <CR>
 
 " Map <C-space> to autocompletion
 imap <C-@> <C-n>
+
+" Map <leader> to space
+let mapleader=","
+

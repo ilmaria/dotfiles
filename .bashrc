@@ -28,6 +28,9 @@ export LESS="        \
     --shift=1        \
     -R               \
 "
+export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
+export TERM=screen-256color       # for a tmux -2 session (also for screen)
+export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
 
 PATH=$HOME/bin:$HOME/.npm-global/bin:$GOPATH/bin:$PATH
 
@@ -45,9 +48,11 @@ alias g=git
 alias kak='$HOME/bin/kakoune'
 
 if command -v exa >/dev/null 2>&1; then
-    alias l='exa --long --all --group-directories-first'
+    alias l='exa --long --group-directories-first'
+    alias la='l --all'
 else
-    alias l='ls -lahF --color=auto --group-directories-first'
+    alias l='ls -lhF --color=auto --group-directories-first'
+    alias la='l -a'
 fi
 
 bind "set completion-ignore-case on"
@@ -60,7 +65,6 @@ shopt -s histverify  # Don't execute immediately upon history expansion
 HISTCONTROL=ignoreboth
 HISTSIZE=10000
 HISTFILESIZE=20000
-HISTFILE="$HOME/.history_bash"
 
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

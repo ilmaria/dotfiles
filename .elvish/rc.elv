@@ -12,6 +12,7 @@ E:EDITOR='vim'
 E:RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 E:NVM_DIR="~/.nvm"
 E:GOPATH="/Users/223961/go"
+E:PLAN9="/usr/local/plan9"
 
 # Allows installing local dependencies with 'pip install -t .pip'
 E:PYTHONPATH="./.pip:$E:PYTHONPATH" 
@@ -31,7 +32,11 @@ paths = [
     ~/.npm-global
     ~/go/bin
     /usr/local/go/bin
+    ~/flutter/bin
+    /usr/local/opt/node@8/bin
+    ~/.cargo/bin
     $@paths
+	$E:PLAN9"/bin"
 ]
 
 # Aliases and functions
@@ -39,20 +44,15 @@ fn l [@args]{
     exa --long --all --group-directories-first $@args
 }
 
+fn ls [@args]{
+    exa --long --group-directories-first $@args
+}
 fn dotfiles [@args]{
     git --git-dir=$E:HOME/.dotfiles/ --work-tree=$E:HOME $@args
 }
 
 fn g [@args]{
     git $@args
-}
-
-fn npm [@args]{
-    bash -c "source "$E:NVM_DIR/nvm.sh" && npm "(joins " " $args)
-}
-
-fn nvm [@args]{
-    bash -c "source "$E:NVM_DIR/nvm.sh" && nvm "(joins " " $args)
 }
 
 # Navigate directory history

@@ -1,20 +1,38 @@
 #!/bin/sh
 
-GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+
+parse_issue() {
+    echo "kk $1"
+    $(echo "$1" | egrep -o '^\w-[1-9][0-9]*')
+}
 
 # Search for issue name in the git branch.
-ISSUE=$(egrep -o '^\w-[1-9][0-9]*' "$GIT_BRANCH")
+ISSUE=$(parse_issue $GIT_BRANCH)
 
-case "$GIT_BRANCH" in
+case $GIT_BRANCH in
     # If the branch is one of these, do nothing.
     master|staging|qa|portfolio)
         exit 0
         ;;
 esac
 
-if [ -z "$ISSUE" ]; then
-    echo "Current git branch is missing issue name. You can commit with flag '--no-verify'." >&2
+if [ -f $(git rev-parse --git-dir)/MERGE_HEAD ]; then 
+    # Merge in progress
+    exit 0
+fi
+
+COMMIT_MSG="$1"
+
+if [ ! -z $(parse_issue $COMMIT_MSG) ]; then
+    # Commit message already starts with an issue
+    exit 0
+fi
+
+if [ -z $ISSUE ]; then
+    echo "Current git branch is missing the issue name. You can commit with flag '--no-verify'." >&2
     exit 1
 fi
 
-
+# Prepend commit message with issue
+echo $ISSUE $COMMIT_MSG

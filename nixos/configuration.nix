@@ -49,20 +49,9 @@
     BROWSER = "firefox";
   };
 
-  # nixpkgs.config = baseConfig // {
-  #   packageOverrides = pkgs: {
-  #     elvish = pkgs.elvish.overrideAttrs (old: {
-  #       shellPath = "/bin/elvish";
-  #     });
-  #   };
-  # };
-
   programs.bash.enableCompletion = true;
   programs.ssh.startAgent = true;
   programs.spacefm.enable = true;
-
-  # Did not help with vsync on laptop
-  # services.compton.enable = true;
 
   services.xserver.enable = true;
   services.xserver.windowManager = {

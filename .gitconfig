@@ -27,14 +27,17 @@
  
     a = add
     aa = add --all
-    c = commit --verbose
-    cc = commit
+    c = commit
     ca = commit -a --verbose
-    cm = commit -m
-    cam = commit -a -m
+    ci = commit --interactive
+    cm = commit -a -m
     m = commit --amend --verbose
+
+    uncommit = reset HEAD^ 
+    hard = reset --hard @{upstream} 
    
     d = diff
+    du = diff HEAD @{upstream}
     ds = diff --stat
     dc = diff --cached
   

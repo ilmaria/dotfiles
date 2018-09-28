@@ -1,14 +1,6 @@
 { config, pkgs, lib, ... }:
-
-let
-  unstable = import <nixos-unstable> {
-    config.allowUnfree = true;
-  };
-in {
-
+{
   boot.cleanTmpDir = true;
-
-  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
   networking.hostName = "ilmari-nixos";
 
@@ -31,7 +23,6 @@ in {
   sound.mediaKeys.volumeStep = "1%";
 
   environment.systemPackages = with pkgs; [ 
-    (import ./elvish.nix)
     chromium
     curl
     dmenu
@@ -46,7 +37,6 @@ in {
     ripgrep
     rustup
     rxvt_unicode
-    unstable.stack
     vim_configurable  # vim with cliboard support (also depends on X11)
     vlc
     vscode
@@ -58,21 +48,10 @@ in {
     EDITOR = "vim";
     BROWSER = "firefox";
   };
-  environment.shells = [ (import ./elvish.nix) ];
-
-  # nixpkgs.config = baseConfig // {
-  #   packageOverrides = pkgs: {
-  #     elvish = pkgs.elvish.overrideAttrs (old: {
-  #       shellPath = "/bin/elvish";
-  #     });
-  #   };
-  # };
 
   programs.bash.enableCompletion = true;
   programs.ssh.startAgent = true;
   programs.spacefm.enable = true;
-
-  services.compton.enable = true;
 
   services.xserver.enable = true;
   services.xserver.windowManager = {
@@ -104,17 +83,8 @@ in {
 
   services.xserver.layout = "fi";
   services.xserver.xkbVariant = "nodeadkeys";
-  services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.xautolock.enable = false;
 
-  services.xserver.screenSection = ''
-    Option "metamodes"                "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
-    Option "AllowIndirectGLXProtocol" "off"
-    Option "TripleBuffer"             "on"
-  '';
-  services.xserver.monitorSection = ''
-    Option "DPMS" "false"
-  '';
   services.xserver.serverLayoutSection = ''
     Option "StandbyTime" "0"
     Option "SuspendTime" "0"
@@ -130,7 +100,6 @@ in {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.ilmari = {
-    shell = (import ./elvish.nix);
     isNormalUser = true;
     createHome = true;
     home = "/home/ilmari";
@@ -141,5 +110,5 @@ in {
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "17.09"; # Did you read the comment?
+  system.stateVersion = "18.03"; # Did you read the comment?
 }

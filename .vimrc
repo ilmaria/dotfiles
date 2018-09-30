@@ -73,6 +73,7 @@ nnoremap ÄÄ ]]
 nnoremap ö :
 
 nnoremap <Space> :
+vnoremap <Space> :
 cnoremap <Space><Space> <CR>
 
 " Map <C-space> to autocompletion

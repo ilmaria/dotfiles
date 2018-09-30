@@ -34,6 +34,7 @@
     keepass
     libnotify
     notify-osd
+    psmisc
     ripgrep
     rustup
     rxvt_unicode
@@ -41,8 +42,10 @@
     vlc
     vscode
     wget
+    xbindkeys
     xlibs.xmessage    # This is needed for xmobar
     xlibs.xset
+    xvkbd
   ];
   environment.variables = {
     EDITOR = "vim";
@@ -51,34 +54,27 @@
 
   programs.bash.enableCompletion = true;
   programs.ssh.startAgent = true;
-  programs.spacefm.enable = true;
 
   services.xserver.enable = true;
-  services.xserver.windowManager = {
-    xmonad.enable = true;
-    xmonad.enableContribAndExtras = true;
-    xmonad.extraPackages = haskellPackages: [
-      haskellPackages.xmobar
-    ];
-    default = "xmonad";
+  services.xserver.desktopManager.xfce = with pkgs; {
+    enable = true;
+    thunarPlugins = [ xfce.thunar-archive-plugin ];
+    extraSessionCommands = ''
+      # Set keyboard repeat rate
+      ${xlibs.xset}/bin/xset r rate 190 30
+      # Set mouse speed to 1
+      ${xlibs.xset}/bin/xset m 1
+      # Use custom key shortcuts defined in ~/.xbindkeysrc
+      ${xbindkeys}
+    '';
   };
-  services.xserver.desktopManager = {
-    default = "none";
-    xterm.enable = false;
-  };
+  services.xserver.desktopManager.xterm.enable = false;
+
   services.xserver.displayManager = {
     slim.enable = true;
     slim.defaultUser = "ilmari";
     slim.autoLogin = true;
     slim.extraConfig = "numlock  on";
-    sessionCommands = ''
-      # Set keyboard repeat rate
-      ${pkgs.xlibs.xset}/bin/xset r rate 190 30
-      # Set mouse speed to 1
-      ${pkgs.xlibs.xset}/bin/xset m 1
-      # Select  wallpaper
-      ${pkgs.feh}/bin/feh --no-fehbg --bg-scale ~/wallpapers/current.* &
-    '';
   };
 
   services.xserver.layout = "fi";

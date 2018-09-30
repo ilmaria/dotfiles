@@ -26,12 +26,11 @@
     graph = log --graph --oneline
  
     a = add
-    aa = add --all
-    c = commit
-    ca = commit -a --verbose
-    ci = commit --interactive
-    cm = commit -a -m
-    m = commit --amend --verbose
+    c = commit -v
+    ca = commit -v -a
+    ci = commit -v --interactive
+    cm = commit -v -a -m
+    m = commit -v --amend
 
     uncommit = reset HEAD^ 
     hard = reset --hard @{upstream} 

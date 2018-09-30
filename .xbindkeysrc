@@ -1,0 +1,23 @@
+# Copy (Ctrl+c)
+"xvkbd -no-jump-pointer -xsendevent -text '\Cc'"
+F3
+
+# Paste (Ctrl+v)
+"xvkbd -no-jump-pointer -xsendevent -text '\Cv'"
+F4
+
+# New browser tab (Ctrlt+t)
+"xvkbd -no-jump-pointer -xsendevent -text '\Ct'"
+F9
+
+# Previous browser tab (Ctrl+Tab)
+"xvkbd -no-jump-pointer -xsendevent -text '\C\t'"
+F10
+
+# Next browser tab (Ctrl+Tab)
+"xvkbd -no-jump-pointer -xsendevent -text '\C\t'"
+F11
+
+# Close browser tab (Ctrl+w)
+"xvkbd -no-jump-pointer -xsendevent -text '\Cw'"
+F12

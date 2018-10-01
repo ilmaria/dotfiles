@@ -56,12 +56,12 @@
   programs.ssh.startAgent = true;
 
   services.xserver.enable = true;
+  services.xserver.autoRepeatDelay = 190;
+  services.xserver.autoRepeatInterval = 30;
   services.xserver.desktopManager.xfce = with pkgs; {
     enable = true;
     thunarPlugins = [ xfce.thunar-archive-plugin ];
     extraSessionCommands = ''
-      # Set keyboard repeat rate
-      ${xlibs.xset}/bin/xset r rate 190 30
       # Set mouse speed to 1
       ${xlibs.xset}/bin/xset m 1
       # Use custom key shortcuts defined in ~/.xbindkeysrc

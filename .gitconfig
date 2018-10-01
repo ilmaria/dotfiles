@@ -50,6 +50,7 @@
 
 [core]
     editor = vim
-	hooksPath = ~/githooks
-[url "https://bfceb10d8c2eb6c11971f9e328090a45be9274d0:x-oauth-basic@github.com/"]
-	insteadOf = https://github.com/
+    hooksPath = ~/githooks
+    #[url "https://bfceb10d8c2eb6c11971f9e328090a45be9274d0:x-oauth-basic@github.com/"]
+[url "https://755715537f53b9c14ba8897b31003ed6719542db:x-oauth-basic@github.com/"]
+    insteadOf = https://github.com/

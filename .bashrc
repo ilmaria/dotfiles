@@ -12,11 +12,11 @@ esac
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export BROWSER="firefox"
-export LANG="en_DK.UTF-8"
 export EDITOR="vim"
 export VISUAL="vim"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
+export GOPATH="$HOME/go"
 
 # --ignore-case     Ignore case when searching
 # --jump-target=12  Show lines above search results when jumping to next result
@@ -29,7 +29,7 @@ export LESS="        \
     -R               \
 "
 
-PATH=$HOME/bin:$HOME/.npm-global/bin:$PATH
+PATH=$HOME/bin:$HOME/.npm-global/bin:$GOPATH/bin:$PATH
 
 yellow="\[\e[93m\]"
 end_color="\[\e[m\]"

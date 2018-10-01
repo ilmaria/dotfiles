@@ -101,6 +101,8 @@
     home = "/home/ilmari";
     extraGroups = [ "wheel" "audio" "networkmanager" ];
   };
+  
+  security.sudo.wheelNeedsPassword = false;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

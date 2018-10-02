@@ -66,7 +66,7 @@
       # Set mouse speed to 1
       ${xlibs.xset}/bin/xset m 1
       # Use custom key shortcuts defined in ~/.xbindkeysrc
-      ${xbindkeys}
+      ${xbindkeys}/bin/xbindkeys
     '';
   };
   services.xserver.desktopManager.xterm.enable = false;

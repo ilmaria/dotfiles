@@ -16,6 +16,7 @@
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
+  services.xserver.libinput.accelProfile = "flat";
   services.xserver.libinput.clickMethod = "clickfinger";
   services.xserver.libinput.additionalOptions = ''
     Option "TappingButtonMap" "lmr"

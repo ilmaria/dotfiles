@@ -17,6 +17,7 @@
   time.timeZone = "Europe/Helsinki";
 
   hardware.pulseaudio.enable = true;
+  hardware.cpu.intel.updateMicrocode = true; 
 
   sound.enable = true;
   sound.mediaKeys.enable = true;

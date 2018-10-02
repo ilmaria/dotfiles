@@ -1,9 +1,9 @@
 # Copy (Ctrl+c)
-"xvkbd -no-jump-pointer -xsendevent -text '\cc'"
+"xvkbd -no-jump-pointer -xsendevent -text '\Cc'"
 F3
 
 # paste (ctrl+v)
-"xvkbd -no-jump-pointer -xsendevent -text '\cv'"
+"xvkbd -no-jump-pointer -xsendevent -text '\Cv'"
 F4
 
 # new browser tab (ctrlt+t)

@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }:
 {
+  imports = [ ./nixos-updater.nix ];
+
   boot.cleanTmpDir = true;
 
   networking.hostName = "ilmari-nixos";

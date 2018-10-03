@@ -1,7 +1,7 @@
 {config, pkgs, lib, ...}:
 
 {
-   systemd.services.nixosUpdater = {
+   systemd.services.nixos-updater = {
      description = "Nixos updater";
      restartIfChanged = false;
      unitConfig.X-StopOnRemoval = false;
@@ -16,11 +16,12 @@
      path = [ pkgs.gnutar pkgs.xz.bin config.nix.package.out ];
 
      script = ''
-       ${config.system.build.nixos-rebuild}/bin/nixos-rebuild switch --upgrade
+       ${pkgs.nix}/bin/nix-channel --update nixos
+       ${config.system.build.nixos-rebuild}/bin/nixos-rebuild boot
      '';
    };
 
-   systemd.timers.nixosUpdater = {
+   systemd.timers.nixos-updater = {
       wantedBy = [ "timers.target" ];
       description = "Delayed timer for Nixos updater";
       timerConfig.OnBootSec = "10min";

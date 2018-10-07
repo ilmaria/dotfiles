@@ -19,6 +19,10 @@
   time.timeZone = "Europe/Helsinki";
 
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+
+  hardware.bluetooth.enable = true;
+
   hardware.cpu.intel.updateMicrocode = true; 
 
   sound.enable = true;
@@ -63,7 +67,7 @@
   services.xserver.autoRepeatInterval = 30;
   services.xserver.desktopManager.xfce = with pkgs; {
     enable = true;
-    thunarPlugins = [ xfce.thunar-archive-plugin ];
+    thunarPlugins = [ pkgs.xfce.thunar-archive-plugin ];
     extraSessionCommands = ''
       # Set mouse speed to 1
       ${xlibs.xset}/bin/xset m 1

@@ -26,6 +26,8 @@
         <value type="uint" value="6929"/>
         <value type="uint" value="65535"/>
       </property>
+      <property name="enter-opacity" type="uint" value="100"/>
+      <property name="leave-opacity" type="uint" value="100"/>
     </property>
   </property>
   <property name="plugins" type="empty">

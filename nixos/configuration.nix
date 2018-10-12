@@ -21,8 +21,6 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
-  hardware.bluetooth.enable = true;
-
   hardware.cpu.intel.updateMicrocode = true; 
 
   sound.enable = true;

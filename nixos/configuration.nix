@@ -37,8 +37,10 @@
     git
     haskellPackages.xmobar
     keepass
+    leiningen
     libnotify
     notify-osd
+    openjdk8
     psmisc
     ripgrep
     rustup

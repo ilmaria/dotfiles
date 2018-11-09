@@ -19,7 +19,10 @@ export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-t
 export TERM=screen-256color       # for a tmux -2 session (also for screen)
 export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
 
-PATH=$HOME/bin:$HOME/.npm-global/bin:/home/ilmari/.local/bin:$PATH
+export PLAN9=/usr/local/plan9
+PATH=$PATH:$PLAN9/bin export PATH
+
+PATH=$HOME/bin:$HOME/.npm-global/bin:/home/ilmari/.local/bin:$PATH:$PLAN9/bin 
 
 yellow="\[\e[93m\]"
 end_color="\[\e[m\]"

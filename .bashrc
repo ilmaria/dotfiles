@@ -11,7 +11,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # -R                Show colors
 export LESS="        \
     --ignore-case    \
-    --jump-target=5  \
+    --jump-target=4  \
     --shift=1        \
     -R               \
 "

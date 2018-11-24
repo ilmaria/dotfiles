@@ -11,6 +11,17 @@ export PYTHONPATH="./.pip:$PYTHONPATH"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# --ignore-case     Ignore case when searching
+# --jump-target=N   Show lines above search results when jumping to next result
+# --shift=1         Horizontal scroll speed 
+# -R                Show colors
+export LESS="        \
+    --ignore-case    \
+    --jump-target=4  \
+    --shift=1        \
+    -R               \
+"
+
 PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin
 
 if [ -d "/opt/android-sdk/platform-tools" ]
@@ -23,19 +34,6 @@ PS2=' > '
 
 
 # Aliases
-alias ...=../..
-alias ....=../../..
-alias .....=../../../..
-alias ......=../../../../..
-alias 1='cd -'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9'
 alias _=sudo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g=git

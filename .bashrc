@@ -25,7 +25,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # -R                Show colors
 export LESS="        \
     --ignore-case    \
-    --jump-target=12 \
+    --jump-target=4  \
     --shift=1        \
     -R               \
 "

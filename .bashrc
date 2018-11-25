@@ -1,5 +1,4 @@
 export BROWSER="firefox"
-export LANG="en_DK.UTF-8"
 export EDITOR="vim"
 export VISUAL="vim"
 # Enable erlang shell history

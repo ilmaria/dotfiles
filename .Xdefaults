@@ -1,29 +1,29 @@
 ! General urxvt settings
-URxvt.scrollBar:            false
-URxvt.scrollBar_right:      false
-URxvt.transparent:          false
-URxvt.font:                 xft:Roboto Mono
-URxvt.iso14755:             false
-URxvt.perl-ext-common:      default,matcher,clipboard
-URxvt.url-launcher:         chromium
-URxvt.matcher.button:       1
-URxvt.cursorBlink:          1
-URxvt.internalBorder:       30
-URxvt.geometry:             100x34
-URxvt.saveLines:            9999 
-URxvt.e:                    elvish 
+urxvt.scrollBar:            false
+urxvt.scrollBar_right:      false
+urxvt.transparent:          false
+urxvt.font:                 xft:Roboto Mono
+!urxvt.letterSpace:          -3
+urxvt.iso14755:             false
+urxvt.perl-ext-common:      default,matcher,clipboard
+urxvt.url-launcher:         firefox
+urxvt.matcher.button:       1
+urxvt.cursorBlink:          1
+urxvt.internalBorder:       30
+urxvt.geometry:             100x34
+urxvt.saveLines:            9999 
 
 ! Copy paste settings
-URxvt.clipboard.autocopy:   true
-URxvt.keysym.M-c:           perl:clipboard:copy
-URxvt.keysym.M-v:           perl:clipboard:paste
-URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
+urxvt.clipboard.autocopy:   true
+urxvt.keysym.M-c:           perl:clipboard:copy
+urxvt.keysym.M-v:           perl:clipboard:paste
+urxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
 
 ! Fix ctrl and arrow buttons
-URxvt.keysym.Control-Up:    \033[1;5A
-URxvt.keysym.Control-Down:  \033[1;5B
-URxvt.keysym.Control-Left:  \033[1;5D
-URxvt.keysym.Control-Right: \033[1;5C
+urxvt.keysym.Control-Up:    \033[1;5A
+urxvt.keysym.Control-Down:  \033[1;5B
+urxvt.keysym.Control-Left:  \033[1;5D
+urxvt.keysym.Control-Right: \033[1;5C
 
 ! hard contrast: *background: #1d2021
 *background: #282828

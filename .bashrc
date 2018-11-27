@@ -17,6 +17,7 @@ export VISUAL="vim"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 export GOPATH="$HOME/go"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # --ignore-case     Ignore case when searching
 # --jump-target=12  Show lines above search results when jumping to next result
@@ -28,14 +29,11 @@ export LESS="        \
     --shift=1        \
     -R               \
 "
-export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
-export TERM=screen-256color       # for a tmux -2 session (also for screen)
-export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
 
-PATH=$HOME/bin:$HOME/.npm-global/bin:$GOPATH/bin:$PATH
+PATH=$HOME/bin:$HOME/.npm-global/bin:$GOPATH/bin:$HOME/.cargo/bin:$PATH
 
-yellow="\[\e[93m\]"
-end_color="\[\e[m\]"
+yellow='\[\e[93m\]'
+end_color='\[\e[m\]'
 
 PS1="$yellow\n\W > $end_color"
 PS2="$yellow > $end_color"
@@ -94,4 +92,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
+function java_use() {
+    export JAVA_HOME=$(/usr/libexec/java_home -v $1)
+    export PATH=$JAVA_HOME/bin:$PATH
+    java -version
+}

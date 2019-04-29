@@ -39,8 +39,6 @@ if [ -d "/opt/android-sdk/platform-tools" ]; then
     export PATH="$PATH:/opt/android-sdk/platform-tools"
 fi
 
-
-
 # Zsh plugins
 if [ -d '/usr/share/zsh/plugins' ]; then
     plugins='/usr/share/zsh/plugins'
@@ -3470,6 +3468,8 @@ function xtrename () {
 }
 
 zrclocal
+
+export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34"
 
 ## genrefcard.pl settings
 

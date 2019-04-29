@@ -24,11 +24,13 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # --jump-target=N   Show lines above search results when jumping to next result
 # --shift=1         Horizontal scroll speed 
 # -R                Show colors
+# -Q                Quiet bell
 export LESS="        \
     --ignore-case    \
     --jump-target=4  \
     --shift=1        \
     -R               \
+    -Q               \
 "
 
 PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin

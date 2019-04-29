@@ -9,6 +9,8 @@ autocmd Filetype javascript setlocal ts=2 sw=2
 autocmd Filetype html setlocal ts=2 sw=2
 autocmd BufRead,BufNewFile *.nix setlocal ts=2 sw=2
 
+set visualbell
+
 " Set global tab size to 4 space
 set tabstop=4
 set shiftwidth=4

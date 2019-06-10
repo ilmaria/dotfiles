@@ -11,6 +11,10 @@
 # Global Order: zshenv, zprofile, zshrc, zlogin
 ################################################################################
 
+if grep -qi microsoft /proc/version; then
+    source ~/.zshrc.windows
+fi
+
 # Exports
 export BROWSER='firefox'
 export VISUAL="vim"

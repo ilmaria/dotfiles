@@ -1,6 +1,5 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 ;; Disable toolbar
@@ -41,6 +40,13 @@
 
 (custom-set-variables
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (gruvbox-theme dumb-jump))))
+ '(package-selected-packages 
+    '(gruvbox-theme
+      dumb-jump)))
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(package-install-selected-packages)
 
 (load-theme 'gruvbox-dark-medium t)

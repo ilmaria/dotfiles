@@ -37,7 +37,7 @@ export LESS="        \
     -Q               \
 "
 
-PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin
+PATH=$PATH:$HOME/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:/usr/local/go/bin
 
 if [ -d "/opt/android-sdk/platform-tools" ]; then
     export PATH="$PATH:/opt/android-sdk/platform-tools"

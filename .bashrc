@@ -21,7 +21,7 @@ export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
 export PLAN9=/usr/local/plan9
 PATH=$PATH:$PLAN9/bin export PATH
 
-PATH=$HOME/bin:$HOME/.npm-global/bin:/home/ilmari/.local/bin:$PATH:$PLAN9/bin 
+PATH=$HOME/bin:$HOME/.npm-global/bin:/home/ilmari/.local/bin:$PATH:$PLAN9/bin:/usr/local/go/bin
 
 yellow="\[\e[93m\]"
 end_color="\[\e[m\]"

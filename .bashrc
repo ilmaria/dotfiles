@@ -3,6 +3,7 @@ export EDITOR="vim"
 export VISUAL="vim"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
+export TERM=xterm
 
 # --ignore-case     Ignore case when searching
 # --jump-target=N   Show lines above search results when jumping to next result

@@ -23,6 +23,7 @@ export RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/ru
 export PYTHONPATH="./.pip:$PYTHONPATH" 
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
+export TERM=xterm
 
 # --ignore-case     Ignore case when searching
 # --jump-target=N   Show lines above search results when jumping to next result

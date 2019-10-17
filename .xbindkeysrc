@@ -8,16 +8,16 @@ F4
 
 # new browser tab (ctrlt+t)
 "xvkbd -no-jump-pointer -xsendevent -text '\Ct'"
-F9
+Num_Lock
 
 # Previous browser tab (Ctrl+Shift+Tab)
 "xvkbd -no-jump-pointer -xsendevent -text '\C\[ISO_Left_Tab]'"
-F10
+KP_Divide
 
 # Next browser tab (Ctrl+Tab)
 "xvkbd -no-jump-pointer -xsendevent -text '\C\t'"
-F11
+KP_Multiply
 
 # Close browser tab (Ctrl+w)
 "xvkbd -no-jump-pointer -xsendevent -text '\Cw'"
-F12
+KP_Subtract

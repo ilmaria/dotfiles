@@ -1,5 +1,5 @@
 favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,exo-mail-reader.desktop
-recent=firefox.desktop,xfce-wm-settings.desktop,xfce-keyboard-settings.desktop,xfce4-notes.desktop,org.manjaro.pamac.manager.desktop,thunderbird.desktop,qpdfview.desktop,viewnior.desktop,exo-terminal-emulator.desktop,xfce-settings-manager.desktop
+recent=xfce-session-settings.desktop,org.manjaro.pamac.manager.desktop,xfce4-terminal.desktop,xfce-keyboard-settings.desktop,exo-terminal-emulator.desktop,xfce4-taskmanager.desktop,code-oss.desktop,firefox.desktop,xfce4-clipman.desktop,exo-web-browser.desktop
 button-title=Applications
 button-icon=/usr/share/icons/whiskermenu-manjaro.svg
 button-single-row=false

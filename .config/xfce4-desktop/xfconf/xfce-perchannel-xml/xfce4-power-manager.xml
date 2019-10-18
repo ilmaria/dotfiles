@@ -12,5 +12,7 @@
     <property name="dpms-on-ac-off" type="uint" value="0"/>
     <property name="inactivity-on-ac" type="uint" value="120"/>
     <property name="dpms-enabled" type="bool" value="false"/>
+    <property name="lock-screen-suspend-hibernate" type="bool" value="false"/>
+    <property name="logind-handle-lid-switch" type="bool" value="false"/>
   </property>
 </channel>

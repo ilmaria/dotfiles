@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 	<action>
+		<name>Anything</name>
+		<regex>(.+)</regex>
+		<group>0</group>
+		<commands>
+			<command>
+				<name>Plumber</name>
+				<exec>exec-clipboard &quot;\0&quot;</exec>
+			</command>
+		</commands>
+	</action>
+	<action>
 		<name>Image</name>
 		<regex>(http|ftp).+\.(jpg|png|gif)</regex>
 		<group>0</group>

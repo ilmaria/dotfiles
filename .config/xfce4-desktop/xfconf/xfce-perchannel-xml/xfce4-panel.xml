@@ -60,6 +60,7 @@
       <property name="show-frame" type="bool" value="false"/>
       <property name="size-max" type="uint" value="24"/>
       <property name="names-ordered" type="array">
+        <value type="string" value="task manager"/>
         <value type="string" value="notes"/>
         <value type="string" value="orage"/>
         <value type="string" value="msm notifier"/>
@@ -88,9 +89,12 @@
     </property>
     <property name="clipman" type="empty">
       <property name="settings" type="empty">
-        <property name="add-primary-clipboard" type="bool" value="true"/>
+        <property name="add-primary-clipboard" type="bool" value="false"/>
         <property name="history-ignore-primary-clipboard" type="bool" value="true"/>
         <property name="enable-actions" type="bool" value="true"/>
+      </property>
+      <property name="tweaks" type="empty">
+        <property name="skip-action-on-key-down" type="bool" value="false"/>
       </property>
     </property>
     <property name="notes" type="empty">

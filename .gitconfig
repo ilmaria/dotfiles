@@ -22,7 +22,7 @@
 
 [alias]
     #one-line log
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --color-words
     graph = log --graph --oneline
  
     a = add
@@ -35,10 +35,10 @@
     uncommit = reset HEAD^ 
     hard = reset --hard @{upstream} 
    
-    d = diff
-    du = diff HEAD @{upstream}
-    ds = diff --stat
-    dc = diff --cached
+    d = diff --color-words
+    du = diff HEAD @{upstream} --color-words
+    ds = diff --stat --color-words
+    dc = diff --cached --color-words
   
     s = status -s -b
     co = checkout

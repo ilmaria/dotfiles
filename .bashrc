@@ -11,7 +11,7 @@ esac
 # This loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export BROWSER="firefox"
+export BROWSER="chrome"
 export EDITOR="vim"
 export VISUAL="vim"
 # Enable erlang shell history

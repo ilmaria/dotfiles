@@ -12,7 +12,7 @@
 ################################################################################
 
 # Exports
-export BROWSER='firefox'
+export BROWSER='chrome'
 export VISUAL="vim"
 export RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 # Allows installing local dependencies with 'pip install -t .pip'
@@ -41,15 +41,17 @@ fi
 
 # Zsh plugins
 if [ -d '/usr/share/zsh/plugins' ]; then
-    plugins='/usr/share/zsh/plugins'
-if [ -d '/usr/local/share' ]; then
-    plugins='/usr/local/share'
+    zsh_plugins='/usr/share/zsh/plugins'
+elif [ -d '/usr/local/share' ]; then
+    zsh_plugins='/usr/local/share'
 else
-    plugins='/usr/share'
+    zsh_plugins='/usr/share'
 fi
 
-if [ -n "$plugins" ]; then
-    source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+zsh_plugins_path="$zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+if [ -d "$zsh_plugins_path" ]; then
+    source "$zsh_plugins_path"
 fi
 
 # Completions path
@@ -3491,3 +3493,4 @@ export NVM_DIR="$HOME/.nvm"
 # Local variables:
 # mode: sh
 # End:
+

@@ -11,10 +11,6 @@
 # Global Order: zshenv, zprofile, zshrc, zlogin
 ################################################################################
 
-if grep -qi microsoft /proc/version; then
-    source ~/.zshrc.windows
-fi
-
 # Exports
 export BROWSER='firefox'
 export VISUAL="vim"
@@ -24,21 +20,20 @@ export PYTHONPATH="./.pip:$PYTHONPATH"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 export TERM=xterm
+export GOPATH="/Users/223961/go"
 
 # --ignore-case     Ignore case when searching
 # --jump-target=N   Show lines above search results when jumping to next result
 # --shift=1         Horizontal scroll speed 
 # -R                Show colors
-# -Q                Quiet bell
 export LESS="        \
     --ignore-case    \
     --jump-target=4  \
     --shift=1        \
     -R               \
-    -Q               \
 "
 
-PATH=$PATH:$HOME/home/apps:$HOME/.npm-global/bin:$HOME/.cargo/bin:/usr/local/go/bin
+PATH=/usr/local/bin:$PATH:$HOME/bin:$HOME/.npm-global/bin:/usr/local/go/bin:$HOME/go/bin
 
 if [ -d "/opt/android-sdk/platform-tools" ]; then
     export PATH="$PATH:/opt/android-sdk/platform-tools"
@@ -47,11 +42,15 @@ fi
 # Zsh plugins
 if [ -d '/usr/share/zsh/plugins' ]; then
     plugins='/usr/share/zsh/plugins'
+if [ -d '/usr/local/share' ]; then
+    plugins='/usr/local/share'
 else
     plugins='/usr/share'
 fi
 
-source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -n "$plugins" ]; then
+    source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # Completions path
 fpath+=~/.zfunc
@@ -3475,6 +3474,9 @@ function xtrename () {
 zrclocal
 
 export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## genrefcard.pl settings
 

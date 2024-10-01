@@ -1,12 +1,30 @@
+export NVM_DIR="$HOME/.nvm"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 export BROWSER="firefox"
 export EDITOR="vim"
 export VISUAL="vim"
 # Enable erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 export TERM=xterm
+export GOPATH="$HOME/go"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # --ignore-case     Ignore case when searching
 # --jump-target=N   Show lines above search results when jumping to next result
+
+# --ignore-case     Ignore case when searching
+# --jump-target=12  Show lines above search results when jumping to next result
 # --shift=1         Horizontal scroll speed 
 # -R                Show colors
 export LESS="        \
@@ -15,9 +33,6 @@ export LESS="        \
     --shift=1        \
     -R               \
 "
-export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
-export TERM=screen-256color       # for a tmux -2 session (also for screen)
-export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
 
 export PLAN9=/usr/local/plan9
 
@@ -82,3 +97,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+function java_use() {
+    export JAVA_HOME=$(/usr/libexec/java_home -v $1)
+    export PATH=$JAVA_HOME/bin:$PATH
+    java -version
+}

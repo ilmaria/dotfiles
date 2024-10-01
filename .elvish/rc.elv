@@ -21,10 +21,24 @@ E:LESS = (joins " " [
     "-R"
 ])
 
+E:LESS = (joins " " [
+    "--ignore-case"
+    "--jump-target=12"
+    "--shift=1"
+    "-R"
+])
+
 paths = [
-    $@paths
+    /usr/local/bin
     ~/bin
     ~/.npm-global
+    ~/go/bin
+    /usr/local/go/bin
+    ~/flutter/bin
+    /usr/local/opt/node@8/bin
+    ~/.cargo/bin
+    $@paths
+	$E:PLAN9"/bin"
 ]
 
 # Aliases and functions
@@ -32,6 +46,9 @@ fn l [@args]{
     exa --long --all --group-directories-first $@args
 }
 
+fn ls [@args]{
+    exa --long --group-directories-first $@args
+}
 fn dotfiles [@args]{
     git --git-dir=$E:HOME/.dotfiles/ --work-tree=$E:HOME $@args
 }

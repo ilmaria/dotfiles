@@ -51,7 +51,9 @@ else
     plugins='/usr/share'
 fi
 
-source $plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e "$plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source "$plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
 
 # Completions path
 fpath+=~/.zfunc

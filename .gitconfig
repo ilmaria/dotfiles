@@ -4,6 +4,7 @@
 
 [push]
     default = simple
+    autoSetupRemote = true
 
 [merge]
     log = true # Include the summary of merged commits into all newly created merge commits.

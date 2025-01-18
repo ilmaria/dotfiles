@@ -11,37 +11,10 @@
 # Global Order: zshenv, zprofile, zshrc, zlogin
 ################################################################################
 
+source $HOME/.config/shell.env
+
 if grep -qi microsoft /proc/version; then
-    source ~/.zshrc.windows
-fi
-
-# Exports
-export BROWSER='firefox'
-export VISUAL="vim"
-export RUST_SRC_PATH=".rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-# Allows installing local dependencies with 'pip install -t .pip'
-export PYTHONPATH="./.pip:$PYTHONPATH" 
-# Enable erlang shell history
-export ERL_AFLAGS="-kernel shell_history enabled"
-export TERM=xterm
-
-# --ignore-case     Ignore case when searching
-# --jump-target=N   Show lines above search results when jumping to next result
-# --shift=1         Horizontal scroll speed 
-# -R                Show colors
-# -Q                Quiet bell
-export LESS="        \
-    --ignore-case    \
-    --jump-target=4  \
-    --shift=1        \
-    -R               \
-    -Q               \
-"
-
-PATH=$PATH:$HOME/home/apps:$HOME/.npm-global/bin:$HOME/.cargo/bin:/usr/local/go/bin
-
-if [ -d "/opt/android-sdk/platform-tools" ]; then
-    export PATH="$PATH:/opt/android-sdk/platform-tools"
+    source $HOME/.config/zshrc.windows
 fi
 
 # Zsh plugins

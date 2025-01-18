@@ -1,48 +1,4 @@
-export BROWSER="firefox"
-export EDITOR="vim"
-export VISUAL="vim"
-# Enable erlang shell history
-export ERL_AFLAGS="-kernel shell_history enabled"
-export TERM=xterm
-
-# --ignore-case     Ignore case when searching
-# --jump-target=N   Show lines above search results when jumping to next result
-# --shift=1         Horizontal scroll speed 
-# -R                Show colors
-export LESS="        \
-    --ignore-case    \
-    --jump-target=4  \
-    --shift=1        \
-    -R               \
-"
-export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
-export TERM=screen-256color       # for a tmux -2 session (also for screen)
-export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
-
-export PLAN9=/usr/local/plan9
-
-PATH=$HOME/home/apps:$HOME/.npm-global/bin:$HOME/.local/bin:$PATH:$PLAN9/bin:/usr/local/go/bin
-
-yellow="\[\e[93m\]"
-end_color="\[\e[m\]"
-
-PS1="$yellow\n\W > $end_color"
-PS2="$yellow > $end_color"
-
-# Aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias g=git
-alias kak='$HOME/bin/kakoune'
-
-if command -v exa >/dev/null 2>&1; then
-    alias l='exa --long --group-directories-first'
-    alias la='l --all'
-else
-    alias l='ls -lhF --color=auto --group-directories-first'
-    alias la='l -a'
-fi
+source $HOME/.config/shell.env
 
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"

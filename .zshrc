@@ -17,6 +17,10 @@ if grep -qi microsoft /proc/version; then
     source $HOME/.config/zshrc.windows
 fi
 
+# Fix 'home' and 'end' keys not working on commandline
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+
 # Zsh plugins
 if [ -d '/usr/share/zsh/plugins' ]; then
     plugins='/usr/share/zsh/plugins'

@@ -1,17 +1,43 @@
 [user]
     name = Ilmari Autio
-    email = ilmari.autio@gmail.com
+    email = ilmari@autio.me
 
 [push]
     default = simple
     autoSetupRemote = true
+    followTags = true
+
+[pull]
+	ff = only
+
+[column]
+    ui = auto
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    sort = version:refname
+
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+
+[rerere]
+    enabled = true
+    autoupdate = true
 
 [merge]
     log = true # Include the summary of merged commits into all newly created merge commits.
     stat = true # Show merge statistics after merge.
 
 [diff]
-    indentHeuristic = on
+    # indentHeuristic = on # Not needed with new algorithm
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 
 [color]
     diff = auto
@@ -55,5 +81,3 @@
     editor = vim
     autocrlf = input
 
-[pull]
-	ff = only

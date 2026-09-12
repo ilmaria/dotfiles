@@ -17,9 +17,19 @@
 (setopt isearch-wrap-pause 'no)
 (setopt shell-command-prompt-show-cwd t)
 (setopt compilation-scroll-output 'first-error)
-(setopt global-xref-mouse-mode t)
+(setopt electric-pair-mode t)
 ;; Hide commands in M-x which do not work in the current mode.
 (setq read-extended-command-predicate #'command-completion-default-include-p)
+(setopt editorconfig-mode t)
+(setopt vc-auto-revert-mode t)
+(setopt vc-dir-save-some-buffers-on-revert t)
+(setopt vc-find-revision-no-save t)
+(setopt vc-follow-symlinks t)
+(setopt vc-deduce-backend-nonvc-modes t)
+(setopt sentence-end-double-space nil)
+(setopt cua-delete-copy-to-register-0 nil)
+;; Remove highlight from replaced selection
+(set-face-attribute 'delete-selection-replacement nil :inherit 'default :background nil)
 
 ;; Scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 3))) ;; one line at a time
@@ -27,9 +37,9 @@
 (setq mouse-wheel-follow-mouse 't)                  ;; scroll window under mouse
 (setq scroll-step 1)                                ;; keyboard scroll one line at a time
 
-(setq default-frame-alist
-      '((width . 200)
-        (height . 60)))
+(defvar package-archives)
+(with-eval-after-load 'package
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
 ;; Make dired open folders in the same window
 (use-package dired
@@ -67,6 +77,7 @@
   :custom
   (corfu-auto t)
   (corfu-quit-no-match t)
+  (corfu-on-exact-match 'quit)
   :init
   (global-corfu-mode)
   (keymap-set corfu-mode-map "<escape>" #'corfu-quit)
@@ -80,7 +91,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(## consult corfu gruvbox-theme marginalia orderless vertico vundo)))
+   '(## backward-forward consult corfu gruvbox-theme marginalia orderless
+        vertico vundo)))
 
 (use-package emacs
   :custom
@@ -91,8 +103,19 @@
   ;; Hide commands in M-x which do not apply to the current mode.
   (read-extended-command-predicate #'command-completion-default-include-p))
 
-(global-set-key (kbd "M-<left>") 'previous-buffer)
-(global-set-key (kbd "M-<right>") 'next-buffer)
+(use-package backward-forward
+  :functions backward-forward-mode backward-forward-previous-location backward-forward-next-location
+  :defines backward-forward-mode-map
+  :bind (:map backward-forward-mode-map
+              ("<C-left>" . nil)
+              ("<C-right>" . nil))
+  :config
+  (backward-forward-mode t)
+  (keymap-global-set "<mouse-4>" #'backward-forward-previous-location)
+  (keymap-global-set "<mouse-5>" #'backward-forward-next-location))
+
+;; Move through windows with M-<arrow keys>
+(windmove-default-keybindings 'meta)
 
 (defun unpop-global-mark ()
   "Unpop off global mark ring and jump to the top location."
@@ -118,21 +141,7 @@
     (goto-char position)
     (switch-to-buffer buffer)))
 
-;(keymap-global-set "<mouse-4>" #'pop-global-mark)
-;(keymap-global-set "<mouse-5>" #'unpop-global-mark)
-
-(keymap-global-set "<mouse-4>" #'xref-go-back)
-(keymap-global-set "<mouse-5>" #'xref-go-forward)
-
-(defun my-xref-find-definitions-at-mouse (event)
-  "Go to mouse click location and run `xref-find-definitions` with EVENT."
-  (interactive "e")
-  (mouse-set-point event)
-  (let ((id (xref-backend-identifier-at-point (xref-find-backend))))
-    (if id
-        (xref-find-definitions id))))
-
-(keymap-global-set "<mouse-2>" #'my-xref-find-definitions-at-mouse)
+(keymap-global-set "<mouse-2>" #'xref-find-definitions-at-mouse)
 
 (keymap-set minibuffer-local-map "<escape>" #'keyboard-escape-quit)
 
@@ -141,6 +150,35 @@
 (keymap-global-set "C-f" #'isearch-forward)
 (keymap-set isearch-mode-map "<return>" #'isearch-repeat-forward)
 (keymap-set isearch-mode-map "S-<return>" #'isearch-repeat-backward)
+(keymap-global-set "C-S-<tab>" #'next-buffer)
+(keymap-global-set "C-<tab>" #'previous-buffer)
+
+(define-advice push-mark (:around (original-fn &optional location nomsg activate) push-mark-local-and-global)
+  "`push-mark' now also adds to `global-mark-ring'."
+  (funcall original-fn location nomsg activate)
+  (when (not (equal (mark-marker)
+                    (car global-mark-ring)))
+    (push (copy-marker (mark-marker)) global-mark-ring)
+    (when (> (length global-mark-ring) global-mark-ring-max)
+      (move-marker (car (nthcdr global-mark-ring-max global-mark-ring)) nil)
+      (setcdr (nthcdr (1- global-mark-ring-max) global-mark-ring) nil))))
+
+;; Automatically reread from disk if the underlying file changes by
+;; using the OS file change notification interface rather than
+;; repeatedly polling to see if there are changes.
+(setopt auto-revert-avoid-polling t)
+(setopt auto-revert-interval 5)
+(setopt auto-revert-check-vc-info t)
+(global-auto-revert-mode)
+
+;; Save existing clipboard content to the kill ring---useful if you've
+;; copied something from an external program and then kill some text
+;; in Emacs shortly after. Also, deduplicate kill ring contents.
+(setopt save-interprogram-paste-before-kill t)
+(setopt kill-do-not-save-duplicates t)
+
+;; Don't ping url-looking things when running find-file
+(setopt ffap-machine-p-known 'reject)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -199,11 +237,19 @@
 ; (define-key cua--prefix-override-keymap [(control v)] #'my-paste)
   )
 
-(keymap-global-set "C-SPC" ctl-x-map)
+(keymap-global-set "C-SPC" #'completion-at-point)
 
 (keymap-global-set "C-z" #'undo-only)
 (keymap-global-set "C-y"  #'undo-redo)
 (keymap-global-set "C-S-z" #'undo-redo)
+
+(defun my-comment-lines ()
+  "Comment lines with `save-excursion'."
+  (interactive)
+  (save-excursion
+    (call-interactively #'comment-line)))
+
+(keymap-global-set "C-'" #'my-comment-lines)
 
 (add-hook 'prog-mode-hook 'flymake-mode)
 

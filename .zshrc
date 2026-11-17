@@ -13,7 +13,7 @@
 
 source $HOME/.config/shell.env
 
-if grep -qi microsoft /proc/version; then
+if [ -f /proc/version ] && grep -qi microsoft /proc/version; then
     source $HOME/.config/zshrc.windows
 fi
 
